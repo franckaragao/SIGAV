@@ -36,6 +36,12 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		this.applicationContext = applicationContext;
 	}
 
+	/**
+	 * Necessário para encontrar a view. Usa um template engine
+	 * paa processar a view encontrada. Disponpivel no contexto do spring (Bean)
+	 * 
+	 * @return
+	 */
 	@Bean
 	public ViewResolver viewResolver() {
 		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
@@ -44,6 +50,11 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		return resolver;
 	}
 
+	/**
+	 * Engine que processa a view, necessita do template resolver.
+	 * Fica disponivel no contexto do spring (Bean)
+	 * @return
+	 */
 	@Bean
 	public TemplateEngine templateEngine() {
 		SpringTemplateEngine engine = new SpringTemplateEngine();
@@ -53,6 +64,10 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		return engine;
 	}
 
+	/**
+	 * Configuração dos templates (i.e., classpath, formato, etc.)
+	 * @return
+	 */
 	private ITemplateResolver templateResolver() {
 		SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
 		resolver.setApplicationContext(applicationContext);
