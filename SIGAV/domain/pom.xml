@@ -5,6 +5,6 @@
     <artifactId>SIGAV</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
-  <artifactId>domain</artifactId>
-  <name>domain-SIGAV</name>
+  <artifactId>domain-SIGAV</artifactId>
+  <name>domain</name>
 </project>

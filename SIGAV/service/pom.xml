@@ -5,6 +5,6 @@
     <artifactId>SIGAV</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
-  <artifactId>service</artifactId>
-  <name>service-SIGAV</name>
+  <artifactId>service-SIGAV</artifactId>
+  <name>service</name>
 </project>
