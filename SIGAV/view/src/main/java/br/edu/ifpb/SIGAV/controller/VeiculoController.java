@@ -2,6 +2,9 @@ package br.edu.ifpb.SIGAV.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import br.edu.ifpb.SIGAV.domain.Veiculo;
 
 /**
  * 
@@ -13,6 +16,12 @@ public class VeiculoController {
 	
 	@RequestMapping("/veiculos/novo")
 	public String novo(){
+		return "veiculo/cadastro_veiculo";
+	}
+	
+	@RequestMapping(value = "/veiculos/novo", method = RequestMethod.POST)
+	public String save(Veiculo veiculo){
+		System.out.println(veiculo.getIdentificacao());
 		return "veiculo/cadastro_veiculo";
 	}
 }
