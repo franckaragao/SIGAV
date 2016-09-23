@@ -1,10 +1,21 @@
 package br.edu.ifpb.SIGAV.domain;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Veiculo {
 
+	@NotNull
 	private Placa placa;
+	
+	@NotEmpty
 	private String modelo;
+	
+	@NotEmpty
 	private String identificacao;
+	
+	@NotEmpty
 	private String chaci;
 
 	public Veiculo() {
