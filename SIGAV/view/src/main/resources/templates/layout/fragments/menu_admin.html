@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<aside class="aw-layout-sidebar  js-sidebar" th:fragment="menuAdmin">
+		<div class="aw-layout-sidebar__content">
+
+	    	<nav class="aw-menu  js-menu">
+	      		<ul class="aw-menu__list">
+	
+	        		<li class="aw-menu__item">
+	          			<a href="dashboard.html"><i class="fa  fa-fw  fa-tachometer"></i><span>Dashboard</span></a>
+	        		</li>
+	
+	        		<li class="aw-menu__item  is-active">
+	          			<a href="#">
+	            			<i class="fa  fa-fw  fa-car"></i><span>Veiculos</span>
+	            			<i class="aw-menu__navigation-icon  fa"></i>
+	          			</a>
+	      
+	          			<ul class="aw-menu__list  aw-menu__list--sublist">
+				            <li class="aw-menu__item  aw-menu__item--link"><a href="cadastro-produto.html">Cadastro de veículo</a></li>
+				            <li class="aw-menu__item  aw-menu__item--link"><a href="pesquisa-produtos.html">Pesquisa de veículos</a></li>
+	          			</ul>
+	        		</li>
+	        		<li class="aw-menu__item">
+	          			<a href="#">
+	            			<i class="fa  fa-fw  fa-calendar"></i><span>Agendamentos</span>
+	            			<i class="aw-menu__navigation-icon  fa"></i>
+	          			</a>
+	      
+	          			<ul class="aw-menu__list  aw-menu__list--sublist">
+				            <li class="aw-menu__item  aw-menu__item--link"><a href="cadastro-produto.html">Registro de agendamento</a></li>
+				            <li class="aw-menu__item  aw-menu__item--link"><a href="pesquisa-produtos.html">Pesquisa de agendamentos</a></li>
+	          			</ul>
+	        		</li>
+	      		</ul>
+	    	</nav>
+		</div>
+	</aside>
+	</body>
+</html>
