@@ -10,5 +10,18 @@
 	<name>data</name>
 
 	<dependencies>
+		<!-- JPA / Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Hibernate - Java 8 support -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 </project>
