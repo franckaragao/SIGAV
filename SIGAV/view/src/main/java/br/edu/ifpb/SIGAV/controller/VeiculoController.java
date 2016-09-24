@@ -26,4 +26,5 @@ public class VeiculoController {
 		System.out.println(veiculo.getIdentificacao());
 		return "veiculo/cadastro_veiculo";
 	}
+	
 }
