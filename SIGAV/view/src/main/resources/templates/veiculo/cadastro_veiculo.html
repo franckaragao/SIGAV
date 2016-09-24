@@ -8,7 +8,81 @@
 
 <body>
 	<section layout:fragment="content">
-	
+
+		<div class="page-header">
+			<div class="container-fluid">
+			
+				<h1>Cadastro de Veículo</h1>
+				
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="alert  alert-danger  alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<i class="fa  fa-exclamation-circle"></i> Já existe um veículo com o nome informado.
+			</div>
+			
+			<form method="POST" th:object="${cerveja}" class="form-vertical  js-form-loading">
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<label for="identificacao">Identificação</label>
+						<input id="identificacao" type="text" class="form-control"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6 form-group">
+						<label for="modelo">Modelo</label>
+						<input id="modelo" type="text" class="form-control"/>
+					</div>
+					<div class="col-sm-3 form-group">
+						<label for="placa">Placa</label>
+						<input id="placa" type="text" class="form-control"/>
+					</div>
+					<div class="col-sm-3 form-group">
+						<label for="chassi">Chassi</label>
+						<input id="chassi" type="text" class="form-control"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3  form-group">
+						<label for="categoria">Categoria</label>
+						<select id="categoria" class="form-control">
+							<option value="">Selecione uma categoria</option>
+							<option value="1">Pale lager</option>
+						</select>
+					</div>
+					<div class="col-sm-3 form-group">
+						<label for="horimetro">Horimetro</label>
+						<div class="input-group">
+							<input id="horimetro" type="text" class="form-control"/>
+							<div class="input-group-addon">Km</div>
+						</div>
+					</div>
+					<div class="col-sm-3  form-group">
+						<label for="anoAquisicao">Ano de aquisição</label>
+						<input id="anoAquisicao" type="text" class="form-control"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3 form-group">
+						<label for="cidade">Cidade</label>
+						<input id="cidade" type="text" class="form-control"/>
+					</div>
+					<div class="col-sm-3  form-group">
+						<label for="uf">UF</label>
+						<select id="uf" class="form-control">
+							<option value="">Selecione um estado</option>
+							<option value="1">Pale lager</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<button class="btn  btn-primary" type="submit">Salvar</button>
+					<a href="pesquisa_veiculo.html" class="btn  btn-default">Cancelar</a>
+				</div>
+			</form>
+		</div>
 	</section>
 </body>
 </html>
