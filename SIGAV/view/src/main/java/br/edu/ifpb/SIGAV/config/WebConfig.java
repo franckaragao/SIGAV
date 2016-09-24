@@ -18,6 +18,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import br.edu.ifpb.SIGAV.controller.VeiculoController;
+import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 /**
  * Configuração web para mapeamento dos controllers
@@ -62,6 +63,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		engine.setEnableSpringELCompiler(true);
 		engine.setTemplateResolver(templateResolver());
 
+		engine.addDialect(new LayoutDialect());
 		return engine;
 	}
 
