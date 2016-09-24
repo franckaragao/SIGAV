@@ -1,0 +1,26 @@
+/* 
+############
+# COMPONENTS
+############ 
+*/
+
+ 
+/*Field action */
+.sv-field-action{
+	display: flex;	
+}
+
+/*Field action icon */
+.sv-field-action__icon{
+	margin: 6px 0 0 5px;
+}
+
+/* 
+############
+# UTILS
+############ 
+*/
+
+.sv-glyphicon-large{
+	font-size: 19px;
+}

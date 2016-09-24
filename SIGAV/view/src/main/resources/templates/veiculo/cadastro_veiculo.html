@@ -4,7 +4,9 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="'layout/layout_default'">
 
-<head></head>
+<head>
+	<title>Cadastro Veículo</title>
+</head>
 
 <body>
 	<section layout:fragment="content">
@@ -46,10 +48,17 @@
 				<div class="row">
 					<div class="col-sm-3  form-group">
 						<label for="categoria">Categoria</label>
-						<select id="categoria" class="form-control">
-							<option value="">Selecione uma categoria</option>
-							<option value="1">Pale lager</option>
-						</select>
+						<div class="sv-field-action">
+							<select id="categoria" class="form-control">
+								<option value="">Selecione uma categoria</option>
+								<option value="1">Pale lager</option>
+							</select>
+							<div class="sv-field-action__icon">
+								<a href="#" data-toggle="modal" data-target="#cadastroRapCateg">
+									<i class="glyphicon glyphicon-plus-sign sv-glyphicon-large"></i>
+								</a>
+							</div>
+						</div>
 					</div>
 					<div class="col-sm-3 form-group">
 						<label for="horimetro">Horimetro</label>
@@ -83,6 +92,9 @@
 				</div>
 			</form>
 		</div>
+		
+		<div th:replace="categoria/cadastro_rapido ::modal"></div>
+		
 	</section>
 </body>
 </html>
