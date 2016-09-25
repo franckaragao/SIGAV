@@ -6,10 +6,12 @@
 			<PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %logger{36}: %msg%n" />
 		</Console>
 	</Appenders>
-	
+
 	<Loggers>
-		<Logger name="br.edu.ifpb.SIGAV.controller" level="error"/>
-	
+		<Logger name="br.edu.ifpb.SIGAV.controller" level="error" />
+
+		<Logger name="org.hibernate.SQL" level="debug" />
+
 		<Root level="error">
 			<AppenderRef ref="Console" />
 		</Root>

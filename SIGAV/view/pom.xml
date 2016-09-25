@@ -86,32 +86,5 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 		</dependency>
-		<!-- JPA / Hibernate -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<scope>compile</scope>
-		</dependency>
-
-		<!-- Hibernate - Java 8 support -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-java8</artifactId>
-			<scope>compile</scope>
-		</dependency>
-
-		<!-- Postgres driver connector -->
-		<dependency>
-			<groupId>postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- Spring Data JPA -->
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-jpa</artifactId>
-		</dependency>
-
 	</dependencies>
 </project>
