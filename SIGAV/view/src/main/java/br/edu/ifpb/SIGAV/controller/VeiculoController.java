@@ -2,13 +2,15 @@ package br.edu.ifpb.SIGAV.controller;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.ifpb.SIGAV.domain.Veiculo;
-import br.edu.ifpb.SIGAV.repository.Veiculos;
 
 /**
  * 
@@ -18,19 +20,15 @@ import br.edu.ifpb.SIGAV.repository.Veiculos;
 @Controller
 public class VeiculoController {
 	
-	@Autowired
-	private Veiculos veiculos;
-	
 	@RequestMapping("/veiculos/novo")
-	public String novo(){
-		veiculos.findAll();
-		return "veiculo/cadastro_veiculo";
+	public ModelAndView novo(Veiculo veiculo){
+		ModelAndView mv = new ModelAndView("veiculo/cadastro_veiculo");
+		return mv;
 	}
 	
 	@RequestMapping(value = "/veiculos/novo", method = RequestMethod.POST)
-	public String save(@Valid Veiculo veiculo){
-		System.out.println(veiculo.getIdentificacao());
-		return "veiculo/cadastro_veiculo";
+	public ModelAndView save(@Valid Veiculo veiculo, BindingResult result, Model model, RedirectAttributes attributes){
+		return novo(veiculo);
 	}
 	
 }
