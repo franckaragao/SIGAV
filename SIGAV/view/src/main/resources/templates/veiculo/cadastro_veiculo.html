@@ -25,14 +25,17 @@
 			</div>
 			
 			<form method="POST" th:object="${cerveja}" class="form-vertical  js-form-loading">
+			
 				<div class="form-group">
 					<label for="identificacao">Identificação</label>
 					<input id="identificacao" type="text" class="form-control"/>
 				</div>
+				
 				<div class="form-group">
 					<label for="descricao">Descrição</label>
 					<textarea id="descricao" rows="3" class="form-control"></textarea>
 				</div>
+				
 				<div class="row">
 					<div class="col-sm-3  form-group">
 						<label for="categoria">Modelo</label>
@@ -41,37 +44,36 @@
 								<option value="">Selecione um modelo</option>
 								<option value="1">Pale lager</option>
 							</select>
+							
 							<div class="sv-field-action__icon">
 								<a href="#" data-toggle="modal" data-target="#cadastroRapCateg">
 									<i class="glyphicon glyphicon-plus-sign sv-glyphicon-large"></i>
 								</a>
 							</div>
+							
 						</div>
 					</div>
-					<div class="col-sm-3 form-group">
-						<label for="placa">Placa</label>
-						<input id="placa" type="text" class="form-control"/>
+						
+					<div class="col-sm-3  form-group">
+						<label for="categoria">Espécie</label>
+						<select id="categoria" class="form-control">
+							<option value="">Selecione uma espécie de veículo</option>
+							<option th:each="esp : ${especies}" th:value="${esp}" th:text="${esp.description}"></option>
+						</select>
 					</div>
-					<div class="col-sm-3 form-group">
-						<label for="chassi">Chassi</label>
-						<input id="chassi" type="text" class="form-control"/>
+					<div class="col-sm-2 form-group">
+						<label for="chassi">Número de lugares</label>
+						<input id="chassi" type="text" class="form-control js-number"/>
 					</div>
+					
+					<div class="col-sm-2  form-group">
+						<label for="anoAquisicao">Ano de aquisição</label>
+						<input id="anoAquisicao" type="text" class="form-control  js-number"/>
+					</div>
+					
 				</div>
 				<div class="row">
-					<div class="col-sm-3  form-group">
-						<label for="categoria">Tipo</label>
-						<div class="sv-field-action">
-							<select id="categoria" class="form-control">
-								<option value="">Selecione um tipo</option>
-								<option value="1">Pale lager</option>
-							</select>
-							<div class="sv-field-action__icon">
-								<a href="#" data-toggle="modal" data-target="#cadastroRapCateg">
-									<i class="glyphicon glyphicon-plus-sign sv-glyphicon-large"></i>
-								</a>
-							</div>
-						</div>
-					</div>
+				
 					<div class="col-sm-3 form-group">
 						<label for="horimetro">Horimetro</label>
 						<div class="input-group">
@@ -79,20 +81,25 @@
 							<div class="input-group-addon">Km</div>
 						</div>
 					</div>
-					<div class="col-sm-3  form-group">
-						<label for="anoAquisicao">Ano de aquisição</label>
-						<input id="anoAquisicao" type="text" class="form-control  js-number"/>
-					</div>
+					
 					<div class="col-sm-3 form-group">
-						<label for="chassi">Número de lugares</label>
-						<input id="chassi" type="text" class="form-control"/>
+						<label for="placa">Placa</label>
+						<input id="placa" type="text" class="form-control"/>
 					</div>
+				
+					<div class="col-sm-4 form-group">
+						<label for="chassi">Chassi</label>
+						<input id="chassi" type="text" class="form-control"/>
+					</div>					
+
 				</div>
 				<div class="row">
+				
 					<div class="col-sm-3 form-group">
 						<label for="cidade">Cidade</label>
 						<input id="cidade" type="text" class="form-control"/>
 					</div>
+					
 					<div class="col-sm-3  form-group">
 						<label for="uf">UF</label>
 						<select id="uf" class="form-control">
@@ -100,6 +107,7 @@
 							<option value="1">Pale lager</option>
 						</select>
 					</div>
+					
 				</div>
 				
 				<div class="form-group">

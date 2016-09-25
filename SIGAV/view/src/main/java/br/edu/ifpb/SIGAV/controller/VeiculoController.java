@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.edu.ifpb.SIGAV.domain.EspecieVeiculo;
 import br.edu.ifpb.SIGAV.domain.Veiculo;
 
 /**
@@ -23,6 +24,7 @@ public class VeiculoController {
 	@RequestMapping("/veiculos/novo")
 	public ModelAndView novo(Veiculo veiculo){
 		ModelAndView mv = new ModelAndView("veiculo/cadastro_veiculo");
+		mv.addObject("especies", EspecieVeiculo.values());
 		return mv;
 	}
 	
