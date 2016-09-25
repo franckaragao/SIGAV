@@ -53,7 +53,23 @@
 							
 						</div>
 					</div>
-						
+					
+					<div class="col-sm-3  form-group">
+						<label for="fabricante">Fabricante</label>
+						<div class="sv-field-action">
+							<select id="fabricante" class="form-control">
+								<option value="">Selecione um fabricante</option>
+								<option value="1">Pale lager</option>
+							</select>
+							
+							<div class="sv-field-action__icon">
+								<a href="#" data-toggle="modal" data-target="#cadastroRapCateg">
+									<i class="glyphicon glyphicon-plus-sign sv-glyphicon-large"></i>
+								</a>
+							</div>
+							
+						</div>
+					</div>
 					<div class="col-sm-3  form-group">
 						<label for="categoria">Espécie</label>
 						<select id="categoria" class="form-control">
@@ -61,14 +77,9 @@
 							<option th:each="esp : ${especies}" th:value="${esp}" th:text="${esp.description}"></option>
 						</select>
 					</div>
-					<div class="col-sm-2 form-group">
+					<div class="col-sm-3 form-group">
 						<label for="chassi">Número de lugares</label>
 						<input id="chassi" type="text" class="form-control js-number"/>
-					</div>
-					
-					<div class="col-sm-2  form-group">
-						<label for="anoAquisicao">Ano de aquisição</label>
-						<input id="anoAquisicao" type="text" class="form-control  js-number"/>
 					</div>
 					
 				</div>
@@ -87,7 +98,7 @@
 						<input id="placa" type="text" class="form-control"/>
 					</div>
 				
-					<div class="col-sm-4 form-group">
+					<div class="col-sm-3 form-group">
 						<label for="chassi">Chassi</label>
 						<input id="chassi" type="text" class="form-control"/>
 					</div>					
@@ -108,6 +119,10 @@
 						</select>
 					</div>
 					
+					<div class="col-sm-3  form-group">
+						<label for="anoAquisicao">Ano de aquisição</label>
+						<input id="anoAquisicao" type="text" class="form-control  js-number"/>
+					</div>
 				</div>
 				
 				<div class="form-group">
