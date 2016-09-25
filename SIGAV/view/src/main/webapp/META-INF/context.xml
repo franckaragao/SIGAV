@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
 <Context>
-	<Resource name="jdbc/SIGAV" auth="Container" type="javax.sql.DataSource"
-		driverClassName="org.postgresql.Driver" url="jdbc:postgresql://localhost:5432/SIGAV"
-		username="postgres" password="123" initialSize="5" maxWait="5000"
-		maxActive="120" maxIdle="5" validationQuery="select 1"
+	<Resource 
+		name="jdbc/SIGAV" 
+		auth="Container" 
+		type="javax.sql.DataSource"
+		driverClassName="org.postgresql.Driver" 
+		url="jdbc:postgresql://localhost:5432/SIGAV"
+		username="postgres" 
+		password="123" 
+		initialSize="5" 
+		maxWait="5000"
+		maxActive="120" 
+		maxIdle="5" 
+		validationQuery="select 1"
 		poolPreparedStatements="true" />
 </Context>
