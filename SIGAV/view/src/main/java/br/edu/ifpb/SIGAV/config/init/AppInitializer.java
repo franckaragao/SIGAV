@@ -2,6 +2,7 @@ package br.edu.ifpb.SIGAV.config.init;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import br.edu.ifpb.SIGAV.config.JPAConfig;
 import br.edu.ifpb.SIGAV.config.WebConfig;
 
 /**
@@ -14,7 +15,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return null;
+		return new Class<?>[] { JPAConfig.class };
 	}
 
 	/**

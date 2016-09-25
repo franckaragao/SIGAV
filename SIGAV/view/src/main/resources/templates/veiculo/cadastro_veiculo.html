@@ -25,16 +25,28 @@
 			</div>
 			
 			<form method="POST" th:object="${cerveja}" class="form-vertical  js-form-loading">
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<label for="identificacao">Identificação</label>
-						<input id="identificacao" type="text" class="form-control"/>
-					</div>
+				<div class="form-group">
+					<label for="identificacao">Identificação</label>
+					<input id="identificacao" type="text" class="form-control"/>
+				</div>
+				<div class="form-group">
+					<label for="descricao">Descrição</label>
+					<textarea id="descricao" rows="3" class="form-control"></textarea>
 				</div>
 				<div class="row">
-					<div class="col-sm-6 form-group">
-						<label for="modelo">Modelo</label>
-						<input id="modelo" type="text" class="form-control"/>
+					<div class="col-sm-3  form-group">
+						<label for="categoria">Modelo</label>
+						<div class="sv-field-action">
+							<select id="categoria" class="form-control">
+								<option value="">Selecione um modelo</option>
+								<option value="1">Pale lager</option>
+							</select>
+							<div class="sv-field-action__icon">
+								<a href="#" data-toggle="modal" data-target="#cadastroRapCateg">
+									<i class="glyphicon glyphicon-plus-sign sv-glyphicon-large"></i>
+								</a>
+							</div>
+						</div>
 					</div>
 					<div class="col-sm-3 form-group">
 						<label for="placa">Placa</label>
@@ -47,10 +59,10 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-3  form-group">
-						<label for="categoria">Categoria</label>
+						<label for="categoria">Tipo</label>
 						<div class="sv-field-action">
 							<select id="categoria" class="form-control">
-								<option value="">Selecione uma categoria</option>
+								<option value="">Selecione um tipo</option>
 								<option value="1">Pale lager</option>
 							</select>
 							<div class="sv-field-action__icon">
@@ -70,6 +82,10 @@
 					<div class="col-sm-3  form-group">
 						<label for="anoAquisicao">Ano de aquisição</label>
 						<input id="anoAquisicao" type="text" class="form-control  js-number"/>
+					</div>
+					<div class="col-sm-3 form-group">
+						<label for="chassi">Número de lugares</label>
+						<input id="chassi" type="text" class="form-control"/>
 					</div>
 				</div>
 				<div class="row">

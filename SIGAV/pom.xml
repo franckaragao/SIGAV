@@ -24,6 +24,8 @@
 
 		<java.version>1.8</java.version>
 		<maven-compiler-pluging.version>3.2</maven-compiler-pluging.version>
+		<flyway-maven-plugin.version>4.0.2</flyway-maven-plugin.version>
+		<postgres-jdbc-connector>9.1-901-1.jdbc4</postgres-jdbc-connector>
 
 		<!-- Spring MVC -->
 		<spring-framework.version>4.3.0.RELEASE</spring-framework.version>
@@ -46,6 +48,9 @@
 
 		<!-- JPA / Hibernate -->
 		<hibernate.version>5.2.2.Final</hibernate.version>
+
+		<!-- Spring Data JPA -->
+		<spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>
 	</properties>
 
 	<build>
@@ -57,6 +62,14 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>${flyway-maven-plugin.version}</version>
+				<configuration>
+					<driver>org.postgresql.Driver</driver>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -124,6 +137,21 @@
 				<artifactId>hibernate-java8</artifactId>
 				<version>${hibernate.version}</version>
 				<scope>compile</scope>
+			</dependency>
+
+			<!-- JDBC postsql -->
+			<dependency>
+				<groupId>postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>${postgres-jdbc-connector}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- Spring Data JPA -->
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-jpa</artifactId>
+				<version>${spring-data-jpa.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

@@ -2,11 +2,13 @@ package br.edu.ifpb.SIGAV.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.edu.ifpb.SIGAV.domain.Veiculo;
+import br.edu.ifpb.SIGAV.repository.Veiculos;
 
 /**
  * 
@@ -16,8 +18,12 @@ import br.edu.ifpb.SIGAV.domain.Veiculo;
 @Controller
 public class VeiculoController {
 	
+	@Autowired
+	private Veiculos veiculos;
+	
 	@RequestMapping("/veiculos/novo")
 	public String novo(){
+		veiculos.findAll();
 		return "veiculo/cadastro_veiculo";
 	}
 	
