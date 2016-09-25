@@ -17,10 +17,21 @@ import org.springframework.transaction.PlatformTransactionManager;
 import br.edu.ifpb.SIGAV.domain.Veiculo;
 import br.edu.ifpb.SIGAV.repository.Veiculos;
 
+/**
+ * Configurações do spring data
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
+ *
+ */
 @Configuration
 @EnableJpaRepositories(basePackageClasses = Veiculos.class)
 public class JPAConfig {
 	
+	/**
+	 * Configuração do pool de conexão
+	 * 
+	 * @return
+	 */
 	@Bean
 	public DataSource dataSource() {
 		JndiDataSourceLookup dataSourceLookup = new JndiDataSourceLookup();
@@ -28,6 +39,11 @@ public class JPAConfig {
 		return dataSourceLookup.getDataSource("jdbc/SIGAV");
 	}
 	
+	/**
+	 * Configuração Drive especifico
+	 * 
+	 * @return
+	 */
 	@Bean
 	public JpaVendorAdapter jpaVendorAdapter() {
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
@@ -38,6 +54,13 @@ public class JPAConfig {
 		return adapter;
 	}
 	
+	/**
+	 * Configuração do entity manager factory
+	 * 
+	 * @param dataSource
+	 * @param jpaVendorAdapter
+	 * @return
+	 */
 	@Bean
 	public EntityManagerFactory entityManagerFactory(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
@@ -48,6 +71,12 @@ public class JPAConfig {
 		return factory.getObject();
 	}
 	
+	/**
+	 * Configuração de transação
+	 * 
+	 * @param entityManagerFactory
+	 * @return
+	 */
 	@Bean
 	public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
