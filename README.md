@@ -3,3 +3,7 @@
 
 ## Tecnologias
 ### Spring Framework
+* Spring MVC
+* Spring Data
+* Thymeleaf
+* Bootstrap
