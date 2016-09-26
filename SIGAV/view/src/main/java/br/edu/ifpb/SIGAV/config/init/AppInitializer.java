@@ -13,6 +13,9 @@ import br.edu.ifpb.SIGAV.config.WebConfig;
  */
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
+	/**
+	 * Configurações de conexão e transação do spring com BD
+	 */
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class<?>[] { JPAConfig.class };
