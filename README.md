@@ -1,13 +1,12 @@
 ## SIGAV
 ### Sistema Comercial para agendamentos de uso de frota de veículos
 
-### Tecnologias
-#### Spring Framework
+#### Tecnologias
 * Spring MVC
 * Spring Data
 * Thymeleaf
 * Bootstrap
 
-### Funcionalidades
+#### Funcionalidades
 * ...
 * ...
