@@ -7,3 +7,7 @@
 * Spring Data
 * Thymeleaf
 * Bootstrap
+
+### Funcionalidades
+* ...
+* ...
