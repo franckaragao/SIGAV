@@ -2,6 +2,7 @@ package br.edu.ifpb.SIGV.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.edu.ifpb.SIGAV.domain.Veiculo;
 import br.edu.ifpb.SIGAV.repository.VeiculoRepository;
@@ -23,6 +24,7 @@ public class VeiculoService {
 	 * @param veiculo
 	 * @return
 	 */
+	@Transactional
 	public Veiculo save(Veiculo veiculo){
 		return veiculoRepository.save(veiculo);
 	}

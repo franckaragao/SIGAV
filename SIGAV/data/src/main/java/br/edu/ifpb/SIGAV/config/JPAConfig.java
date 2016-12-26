@@ -13,6 +13,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import br.edu.ifpb.SIGAV.domain.Veiculo;
 import br.edu.ifpb.SIGAV.repository.VeiculoRepository;
@@ -24,7 +25,8 @@ import br.edu.ifpb.SIGAV.repository.VeiculoRepository;
  *
  */
 @Configuration
-@EnableJpaRepositories(basePackageClasses = VeiculoRepository.class)
+@EnableJpaRepositories(basePackageClasses = VeiculoRepository.class, enableDefaultTransactions = false)
+@EnableTransactionManagement
 public class JPAConfig {
 	
 	/**
