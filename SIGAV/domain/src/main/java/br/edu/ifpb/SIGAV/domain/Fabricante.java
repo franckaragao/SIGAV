@@ -40,11 +40,6 @@ public class Fabricante implements Serializable {
 		this.nome = nome;
 	}
 
-	@Override
-	public String toString() {
-		return "Modelo [nome=" + nome + "]";
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -96,6 +91,11 @@ public class Fabricante implements Serializable {
 		} else if (!veiculos.equals(other.veiculos))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Fabricante [id=" + id + ", nome=" + nome + "]";
 	}
 
 }

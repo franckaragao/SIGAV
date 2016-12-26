@@ -59,6 +59,7 @@ public class VeiculoController {
 			model.addAttribute(veiculo);
 			return novo(veiculo);
 		}
+
 		veiculoService.save(veiculo);
 		attributes.addFlashAttribute("message", "Veículo cadastrado com sucesso");
 		return new ModelAndView("redirect:/veiculos/novo");

@@ -42,7 +42,7 @@
 						<div class="sv-field-action">
 							<select id="fabricante" class="form-control" th:field="*{fabricante}">
 								<option value="">Selecione um fabricante</option>
-								<option th:each="fab : ${fabricantes}" th:value="${fab}" th:text="${fab.nome}"></option>
+								<option th:each="fab : ${fabricantes}" th:value="${fab.id}" th:text="${fab.nome}"></option>
 							</select>
 							
 							<div class="sv-field-action__icon">
