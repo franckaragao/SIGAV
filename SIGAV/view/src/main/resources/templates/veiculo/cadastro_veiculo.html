@@ -19,21 +19,23 @@
 			</div>
 		</div>
 		<div class="container-fluid">
-			<div class="alert  alert-danger  alert-dismissible" role="alert">
+			
+			<div class="alert  alert-danger  alert-dismissible" role="alert" th:each="erro : ${#fields.detailedErrors('${veiculo.*}')}">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<i class="fa  fa-exclamation-circle"></i> Já existe um veículo com o nome informado.
+				<i class="fa  fa-exclamation-circle"></i> 
+					<span th:text="${erro.message}"></span>
 			</div>
 			
-			<form method="POST" th:object="${cerveja}" class="form-vertical  js-form-loading">
+			<form method="POST" th:object="${veiculo}" class="form-vertical  js-form-loading">
 			
 				<div class="form-group">
 					<label for="identificacao">Identificação</label>
-					<input id="identificacao" type="text" class="form-control"/>
+					<input id="identificacao" type="text" class="form-control" th:field="*{identificacao}"/>
 				</div>
 				
 				<div class="form-group">
 					<label for="descricao">Descrição</label>
-					<textarea id="descricao" rows="3" class="form-control"></textarea>
+					<textarea id="descricao" rows="3" class="form-control" th:field="*{descricao}"></textarea>
 				</div>
 				
 				<div class="row">

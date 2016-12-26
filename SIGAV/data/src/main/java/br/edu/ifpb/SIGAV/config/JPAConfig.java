@@ -15,7 +15,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import br.edu.ifpb.SIGAV.domain.Veiculo;
-import br.edu.ifpb.SIGAV.repository.Veiculos;
+import br.edu.ifpb.SIGAV.repository.VeiculoRepository;
 
 /**
  * Configurações do spring data
@@ -24,7 +24,7 @@ import br.edu.ifpb.SIGAV.repository.Veiculos;
  *
  */
 @Configuration
-@EnableJpaRepositories(basePackageClasses = Veiculos.class)
+@EnableJpaRepositories(basePackageClasses = VeiculoRepository.class)
 public class JPAConfig {
 	
 	/**

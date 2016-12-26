@@ -4,6 +4,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import br.edu.ifpb.SIGAV.config.JPAConfig;
 import br.edu.ifpb.SIGAV.config.WebConfig;
+import br.edu.ifpb.SIGV.service.config.ServiceConfig;
 
 /**
  * Configuração do Dispatcher servlet (Front Controller do spring)
@@ -18,7 +19,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	 */
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class<?>[] { JPAConfig.class };
+		return new Class<?>[] { JPAConfig.class, ServiceConfig.class };
 	}
 
 	/**

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.edu.ifpb.SIGAV.domain.Veiculo;
 
 @Repository
-public interface Veiculos extends JpaRepository<Veiculo, Long>{
+public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {
 
 }

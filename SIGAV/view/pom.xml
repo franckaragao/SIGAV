@@ -19,7 +19,7 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>service-SIGAV</artifactId>
+			<artifactId>service</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>

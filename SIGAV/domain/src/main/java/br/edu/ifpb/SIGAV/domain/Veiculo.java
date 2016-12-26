@@ -7,9 +7,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.NotBlank;
 
+/**
+ * Classe representa entidade de negócio Veículo.
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
+ *
+ */
 @Entity
 @Table(name = "veiculo")
 public class Veiculo implements Serializable{
@@ -20,9 +27,10 @@ public class Veiculo implements Serializable{
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 
-	@NotEmpty
+	@NotBlank(message = "Indentificação é obrigatório")
 	private String identificacao;
 
+	@Size(min = 1, max = 50, message = "O tamanho da descrição deve estar entre 1 e 50")
 	private String descricao;
 
 	public Veiculo() {
