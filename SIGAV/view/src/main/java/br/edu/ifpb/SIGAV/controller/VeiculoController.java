@@ -13,6 +13,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.ifpb.SIGAV.domain.Veiculo;
 import br.edu.ifpb.SIGAV.enumerations.EspecieVeiculo;
+import br.edu.ifpb.SIGAV.enumerations.Origin;
+import br.edu.ifpb.SIGAV.repository.FabricanteRepository;
 import br.edu.ifpb.SIGV.service.VeiculoService;
 
 /**
@@ -26,6 +28,9 @@ public class VeiculoController {
 	@Autowired
 	private VeiculoService veiculoService;
 	
+	@Autowired
+	private FabricanteRepository fabricanteRepository;
+	
 	/**
 	 * 
 	 * @param veiculo
@@ -34,7 +39,9 @@ public class VeiculoController {
 	@RequestMapping("/veiculos/novo")
 	public ModelAndView novo(Veiculo veiculo){
 		ModelAndView mv = new ModelAndView("veiculo/cadastro_veiculo");
+		mv.addObject("fabricantes", fabricanteRepository.findAll());
 		mv.addObject("especies", EspecieVeiculo.values());
+		mv.addObject("origins", Origin.values());
 		return mv;
 	}
 	

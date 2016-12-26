@@ -36,29 +36,13 @@
 				</div>
 				
 				<div class="row">
-					<div class="col-sm-3  form-group">
-						<label for="categoria">Modelo</label>
-						<div class="sv-field-action">
-							<select id="categoria" class="form-control">
-								<option value="">Selecione um modelo</option>
-								<option value="1">Pale lager</option>
-							</select>
-							
-							<div class="sv-field-action__icon">
-								<a href="#" data-toggle="modal" data-target="#cadastroRapCateg">
-									<i class="glyphicon glyphicon-plus-sign sv-glyphicon-large"></i>
-								</a>
-							</div>
-							
-						</div>
-					</div>
 					
-					<div class="col-sm-3  form-group">
+					<div class="col-sm-4  form-group">
 						<label for="fabricante">Fabricante</label>
 						<div class="sv-field-action">
-							<select id="fabricante" class="form-control">
+							<select id="fabricante" class="form-control" th:field="*{fabricante}">
 								<option value="">Selecione um fabricante</option>
-								<option value="1">Pale lager</option>
+								<option th:each="fab : ${fabricantes}" th:value="${fab}" th:text="${fab.nome}"></option>
 							</select>
 							
 							<div class="sv-field-action__icon">
@@ -69,59 +53,67 @@
 							
 						</div>
 					</div>
-					<div class="col-sm-3  form-group">
+					<div class="col-sm-4  form-group">
 						<label for="categoria">Espécie</label>
-						<select id="categoria" class="form-control">
+						<select id="categoria" class="form-control" th:field="*{especieVeiculo}">
 							<option value="">Selecione uma espécie de veículo</option>
 							<option th:each="esp : ${especies}" th:value="${esp}" th:text="${esp.description}"></option>
 						</select>
 					</div>
-					<div class="col-sm-3 form-group">
-						<label for="chassi">Número de lugares</label>
-						<input id="chassi" type="text" class="form-control js-number"/>
+					<div class="col-sm-4 form-group">
+						<label for="nLugares">Número de lugares</label>
+						<input id="nLugares" type="number" class="form-control" th:field="*{numeroLugares}"/>
 					</div>
 					
 				</div>
 				<div class="row">
 				
-					<div class="col-sm-3 form-group">
+					<div class="col-sm-4 form-group">
 						<label for="horimetro">Horimetro</label>
 						<div class="input-group">
-							<input id="horimetro" type="text" class="form-control"/>
+							<input id="horimetro" type="number" class="form-control" th:field="*{horimetro}"/>
 							<div class="input-group-addon">Km</div>
 						</div>
 					</div>
 					
-					<div class="col-sm-3 form-group">
+					<div class="col-sm-4  form-group">
+						<label for="anoAquisicao">Ano de aquisição</label>
+						<input id="anoAquisicao" type="number" class="form-control" th:field="*{anoAquisicao}"/>
+					</div>
+					
+					<div class="col-lg-4  col-sm-6  form-group">
+						<label for="origin">Origem</label>
+						<div>
+							<th:block th:each="origin : ${origins}">
+								<div class="radio  radio-inline">
+									<input th:id="|id_${origin}|" type="radio" th:value="${origin}" th:field="*{origin}"> 
+									<label th:for="|id_${origin}|" th:text="${origin.description}">Proprio</label>
+								</div>
+							</th:block>
+						</div>
+					</div>
+					
+				</div>
+				<div class="row">
+					
+					<div class="col-sm-4 form-group">
 						<label for="placa">Placa</label>
 						<input id="placa" type="text" class="form-control"/>
 					</div>
-				
-					<div class="col-sm-3 form-group">
-						<label for="chassi">Chassi</label>
-						<input id="chassi" type="text" class="form-control"/>
-					</div>					
-
-				</div>
-				<div class="row">
-				
-					<div class="col-sm-3 form-group">
+					
+					<div class="col-sm-4 form-group">
 						<label for="cidade">Cidade</label>
 						<input id="cidade" type="text" class="form-control"/>
 					</div>
 					
-					<div class="col-sm-3  form-group">
+					<div class="col-sm-4  form-group">
 						<label for="uf">UF</label>
 						<select id="uf" class="form-control">
 							<option value="">Selecione um estado</option>
 							<option value="1">Pale lager</option>
 						</select>
 					</div>
-					
-					<div class="col-sm-3  form-group">
-						<label for="anoAquisicao">Ano de aquisição</label>
-						<input id="anoAquisicao" type="text" class="form-control  js-number"/>
-					</div>
+
 				</div>
 				
 				<div class="form-group">
@@ -131,7 +123,7 @@
 			</form>
 		</div>
 		
-		<div th:replace="categoria/cadastro_rapido ::modal"></div>
+		<div th:replace="fabricante/cadastro_rapido ::modal"></div>
 		
 	</section>
 </body>
