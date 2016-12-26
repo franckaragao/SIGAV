@@ -6,7 +6,7 @@
 		<artifactId>SIGAV</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>domain-SIGAV</artifactId>
+	<artifactId>domain</artifactId>
 	<name>domain</name>
 
 	<dependencies>
@@ -33,7 +33,7 @@
 
 		<!-- Postgres driver connector -->
 		<dependency>
-			<groupId>postgresql</groupId>
+			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>provided</scope>
 		</dependency>

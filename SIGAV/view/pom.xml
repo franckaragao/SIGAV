@@ -6,7 +6,7 @@
 		<artifactId>SIGAV</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>view-SIGAV</artifactId>
+	<artifactId>view</artifactId>
 	<packaging>war</packaging>
 	<name>view</name>
 
@@ -14,7 +14,7 @@
 
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>data-SIGAV</artifactId>
+			<artifactId>data</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
@@ -24,7 +24,7 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>domain-SIGAV</artifactId>
+			<artifactId>domain</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
