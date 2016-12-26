@@ -1,4 +1,4 @@
-package br.edu.ifpb.SIGAV.domain;
+package br.edu.ifpb.SIGAV.enumerations;
 
 public enum EspecieVeiculo {
 	

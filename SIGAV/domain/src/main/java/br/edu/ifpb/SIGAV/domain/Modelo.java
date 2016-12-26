@@ -2,6 +2,12 @@ package br.edu.ifpb.SIGAV.domain;
 
 import java.io.Serializable;
 
+/**
+ * Classe que representa o modelo de veículos
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
+ *
+ */
 public class Modelo implements Serializable {
 
 	private static final long serialVersionUID = 1L;

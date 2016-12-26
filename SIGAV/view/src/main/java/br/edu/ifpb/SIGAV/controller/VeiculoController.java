@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.edu.ifpb.SIGAV.domain.EspecieVeiculo;
 import br.edu.ifpb.SIGAV.domain.Veiculo;
+import br.edu.ifpb.SIGAV.enumerations.EspecieVeiculo;
 
 /**
  * 
