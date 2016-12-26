@@ -17,7 +17,7 @@ ALTER TABLE veiculo
 	ADD numero_lugares INTEGER;
 	
 ALTER TABLE veiculo
-	ADD horimetro INTEGER;
+	ADD horimetro DECIMAL(10) NOT NULL;
 	
 ALTER TABLE veiculo
 	ADD ano_aquisicao INTEGER;

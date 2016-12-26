@@ -1,6 +1,7 @@
 package br.edu.ifpb.SIGAV.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -57,7 +58,7 @@ public class Veiculo implements Serializable {
 	private Integer numeroLugares;
 
 	@Column(name = "horimetro")
-	private Integer horimetro;
+	private BigDecimal horimetro;
 
 	@Column(name = "ano_aquisicao")
 	private Integer anoAquisicao;
@@ -121,11 +122,11 @@ public class Veiculo implements Serializable {
 		this.numeroLugares = numeroLugares;
 	}
 
-	public Integer getHorimetro() {
+	public BigDecimal getHorimetro() {
 		return horimetro;
 	}
 
-	public void setHorimetro(Integer horimetro) {
+	public void setHorimetro(BigDecimal horimetro) {
 		this.horimetro = horimetro;
 	}
 

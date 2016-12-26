@@ -1,9 +1,7 @@
-$(function(){
-	var number = $('.js-number');
-	number.maskMoney({precision: 0 });
-});
-
-$(function(){
-	var number = $('.js-number-only');
-	number.maskMoney('destroy');
+$(function() {
+	var decimal = $('.js-decimal');
+	decimal.maskMoney();
+	
+	var plain = $('.js-plain');
+	plain.maskMoney({ precision: 0,thousands: '.' });
 });
