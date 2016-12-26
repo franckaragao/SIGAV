@@ -26,6 +26,11 @@ public class VeiculoController {
 	@Autowired
 	private VeiculoService veiculoService;
 	
+	/**
+	 * 
+	 * @param veiculo
+	 * @return
+	 */
 	@RequestMapping("/veiculos/novo")
 	public ModelAndView novo(Veiculo veiculo){
 		ModelAndView mv = new ModelAndView("veiculo/cadastro_veiculo");
@@ -33,6 +38,14 @@ public class VeiculoController {
 		return mv;
 	}
 	
+	/**
+	 * 
+	 * @param veiculo
+	 * @param result
+	 * @param model
+	 * @param attributes
+	 * @return
+	 */
 	@RequestMapping(value = "/veiculos/novo", method = RequestMethod.POST)
 	public ModelAndView save(@Valid Veiculo veiculo, BindingResult result, Model model, RedirectAttributes attributes){
 		if(result.hasErrors()){
@@ -40,7 +53,7 @@ public class VeiculoController {
 			return novo(veiculo);
 		}
 		veiculoService.save(veiculo);
-		attributes.addAttribute("message", "Veículo cadastrado com sucesso");
+		attributes.addFlashAttribute("message", "Veículo cadastrado com sucesso");
 		return new ModelAndView("redirect:/veiculos/novo");
 	}
 	
