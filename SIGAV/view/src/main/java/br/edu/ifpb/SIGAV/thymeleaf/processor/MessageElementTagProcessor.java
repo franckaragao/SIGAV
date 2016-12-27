@@ -34,8 +34,8 @@ public class MessageElementTagProcessor extends AbstractElementTagProcessor {
 		IModelFactory modelFactory  = context.getModelFactory();
 		IModel model = modelFactory.createModel();
 		
-		model.add(modelFactory.createStandaloneElementTag("th:block", "th:include", "fragments/error_message"));
-		model.add(modelFactory.createStandaloneElementTag("th:block", "th:include", "fragments/success_message"));
+		model.add(modelFactory.createStandaloneElementTag("th:block", "th:replace", "fragments/error_message :: alert"));
+		model.add(modelFactory.createStandaloneElementTag("th:block", "th:replace", "fragments/success_message :: alert"));
 		
 		structureHanndler.replaceWith(model, true);
 		
