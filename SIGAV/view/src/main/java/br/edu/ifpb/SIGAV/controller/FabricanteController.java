@@ -41,6 +41,7 @@ public class FabricanteController {
 		if(result.hasErrors()){
 			return new ResponseEntity<>(result.getFieldError("nome").getDefaultMessage(), HttpStatus.BAD_REQUEST);
 		}
+			
 		fabricante = fabricanteService.save(fabricante);
 		
 		return new ResponseEntity<>(fabricante, HttpStatus.OK);

@@ -1,11 +1,14 @@
 package br.edu.ifpb.SIGV.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.edu.ifpb.SIGAV.domain.Fabricante;
 import br.edu.ifpb.SIGAV.repository.FabricanteRepository;
+import br.edu.ifpb.SIGV.service.exeptions.NomeFabricanteExistenteException;
 
 /**
  * 
@@ -26,6 +29,11 @@ public class FabricanteService {
 	 */
 	@Transactional
 	public Fabricante save(Fabricante fabricante){
+		Optional<Fabricante> fabricanteOptional = fabricanteRepository.findByNomeIgnoreCase(fabricante.getNome());
+		
+		if(fabricanteOptional.isPresent())
+			throw new NomeFabricanteExistenteException("Nome de fabricante já cadastrado.");
+		
 		return fabricanteRepository.save(fabricante);
 	}
 

@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -20,6 +22,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import br.edu.ifpb.SIGAV.enumerations.EspecieVeiculo;
 import br.edu.ifpb.SIGAV.enumerations.Origin;
+import br.edu.ifpb.SIGAV.validation.Placa;
 
 /**
  * Classe representa entidade de negócio Veículo.
@@ -37,25 +40,24 @@ public class Veiculo implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 
-	
 	@NotBlank(message = "Indentificação é obrigatório.")
 	private String identificacao;
 
-	@NotBlank(message="Descrição é obrigatório.")
+	@NotBlank(message = "Descrição é obrigatório.")
 	@Size(min = 1, max = 50, message = "O tamanho da descrição deve estar entre 1 e 50.")
 	private String descricao;
 
-	@NotNull(message="A origem é obrigatória.")
+	@NotNull(message = "A origem é obrigatória.")
 	@Enumerated(EnumType.STRING)
 	@Column(name = "origem")
 	private Origin origin;
 
-	@NotNull(message="A especíe de veículo é obrigatória.")
+	@NotNull(message = "A especíe de veículo é obrigatória.")
 	@Enumerated(EnumType.STRING)
 	@Column(name = "especie_veiculo")
 	private EspecieVeiculo especieVeiculo;
 
-	@NotNull(message="O fabricante é obrigatório.")
+	@NotNull(message = "O fabricante é obrigatório.")
 	@ManyToOne
 	@JoinColumn(name = "fabricante_id")
 	private Fabricante fabricante;
@@ -68,8 +70,23 @@ public class Veiculo implements Serializable {
 
 	@Column(name = "ano_aquisicao")
 	private Integer anoAquisicao;
+	
+	@Placa
+	@NotBlank(message="Placa é obrigatória.")
+	private String placa;
 
 	public Veiculo() {
+	
+	}
+	
+	/**
+	 * Metódo callback do JPA.
+	 * 
+	 * Executa antes de inserir ou atualizar no BD.
+	 */
+	@PrePersist @PreUpdate
+	private void prePersistUpdate(){
+		placa = placa.toUpperCase();
 	}
 
 	public Long getId() {
@@ -142,6 +159,14 @@ public class Veiculo implements Serializable {
 
 	public void setAnoAquisicao(Integer anoAquisicao) {
 		this.anoAquisicao = anoAquisicao;
+	}
+
+	public String getPlaca() {
+		return placa;
+	}
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
 	}
 
 	@Override
