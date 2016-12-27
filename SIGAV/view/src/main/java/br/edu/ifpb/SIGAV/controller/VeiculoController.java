@@ -23,6 +23,7 @@ import br.edu.ifpb.SIGV.service.VeiculoService;
  *
  */
 @Controller
+@RequestMapping("/veiculos")
 public class VeiculoController {
 	
 	@Autowired
@@ -36,7 +37,7 @@ public class VeiculoController {
 	 * @param veiculo
 	 * @return
 	 */
-	@RequestMapping("/veiculos/novo")
+	@RequestMapping("/novo")
 	public ModelAndView novo(Veiculo veiculo){
 		ModelAndView mv = new ModelAndView("veiculo/cadastro_veiculo");
 		mv.addObject("fabricantes", fabricanteRepository.findAll());
@@ -53,7 +54,7 @@ public class VeiculoController {
 	 * @param attributes
 	 * @return
 	 */
-	@RequestMapping(value = "/veiculos/novo", method = RequestMethod.POST)
+	@RequestMapping(value = "/novo", method = RequestMethod.POST)
 	public ModelAndView save(@Valid Veiculo veiculo, BindingResult result, Model model, RedirectAttributes attributes){
 		if(result.hasErrors()){
 			model.addAttribute(veiculo);

@@ -50,6 +50,9 @@ $(function(){
 	
 	function onModalClose(){
 		inputModal.val('');
+		containerError.addClass('hidden');
+		form.find('.form-group').removeClass('has-error');
+		
 	};
 	
 	form.on('submit', function(event){

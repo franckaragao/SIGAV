@@ -22,6 +22,7 @@ import br.edu.ifpb.SIGV.service.FabricanteService;
  *
  */
 @Controller
+@RequestMapping("/fabricantes")
 public class FabricanteController {
 	
 	@Autowired
@@ -34,7 +35,7 @@ public class FabricanteController {
 	 * @param model
 	 * @param attributes
 	 */
-	@RequestMapping(value = "/fabricantes", method = RequestMethod.POST, consumes={MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(method = RequestMethod.POST, consumes={MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<?> save(@Valid @RequestBody Fabricante fabricante, BindingResult result){
 		
 		if(result.hasErrors()){
