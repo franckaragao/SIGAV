@@ -7,6 +7,7 @@
 
 <head>
 	<title>Cadastro Veículo</title>
+	<link rel="stylesheet" th:href="@{/stylesheets/vendors/upload.min.css}"/>
 </head>
 
 <body>
@@ -115,6 +116,18 @@
 
 				</div>
 				
+				<div class="row">
+					<div class="form-group  col-sm-12">
+						<label class="control-label">Foto do Veículo</label>
+						
+						<div id="upload-drop" class="bw-upload">
+							<i class="glyphicon  glyphicon-cloud-upload"></i>
+							<span>Arraste a foto aqui ou </span>
+							<a class="bw-upload-form-file">selecione <input id="upload-select" type="file" accept=".jpg,.jpeg,.png"/></a>
+						</div>
+					</div>
+				</div>
+				
 				<div class="form-group">
 					<button class="btn  btn-primary" type="submit">Salvar</button>
 					<a href="pesquisa_veiculo.html" class="btn  btn-default">Cancelar</a>
@@ -125,9 +138,24 @@
 		<div th:replace="fabricante/cadastro_rapido ::modal"></div>
 		
 	</section>
-	
 	<th:block layout:fragment="js-extra">
 		<script th:src="@{/javascripts/fabricante.cadastro-rapido.js}"></script>
+		<script th:src="@{/javascripts/vendors/uikit.min.js}"></script>
+		<script th:src="@{/javascripts/vendors/upload.min.js}"></script>
+		
+		<script>
+		$(function() {
+			var settings = {
+					type: 'json',
+					filelimit: 1,
+					allow: '*.(jpg|jpeg|png)',
+					action: '/sigav/fotos'
+			};
+			
+			UIkit.uploadSelect($('#upload-select'), settings);
+			UIkit.uploadDrop($('#upload-drop'), settings);
+		});
+		</script>
 	</th:block>
 </body>
 </html>
