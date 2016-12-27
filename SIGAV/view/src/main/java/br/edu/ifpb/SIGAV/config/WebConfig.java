@@ -42,6 +42,9 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 
 	private ApplicationContext applicationContext;
 
+	/**
+	 * 
+	 */
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
@@ -89,6 +92,9 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		return resolver;
 	}
 	
+	/**
+	 * Adiciona local de recursos estaticos.
+	 */
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		
@@ -115,6 +121,10 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		return conversionService;
 	}
 	
+	/**
+	 * Resolver para configurações em de views em pr BR.
+	 * @return
+	 */
 	@Bean
 	public LocaleResolver localeResolver() {
 		return new FixedLocaleResolver(new Locale("pt", "BR"));
