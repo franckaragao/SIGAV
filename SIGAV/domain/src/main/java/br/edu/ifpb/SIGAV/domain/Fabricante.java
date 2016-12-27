@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 /**
  * Classe que representa o o fabricante de um veículo.
  * 
@@ -27,6 +29,7 @@ public class Fabricante implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 
+	@NotBlank(message = "Nome é obrigatório.")
 	private String nome;
 
 	@OneToMany(mappedBy = "fabricante")

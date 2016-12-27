@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -36,20 +37,25 @@ public class Veiculo implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 
-	@NotBlank(message = "Indentificação é obrigatório")
+	
+	@NotBlank(message = "Indentificação é obrigatório.")
 	private String identificacao;
 
-	@Size(min = 1, max = 50, message = "O tamanho da descrição deve estar entre 1 e 50")
+	@NotBlank(message="Descrição é obrigatório.")
+	@Size(min = 1, max = 50, message = "O tamanho da descrição deve estar entre 1 e 50.")
 	private String descricao;
 
+	@NotNull(message="A origem é obrigatória.")
 	@Enumerated(EnumType.STRING)
 	@Column(name = "origem")
 	private Origin origin;
 
+	@NotNull(message="A especíe de veículo é obrigatória.")
 	@Enumerated(EnumType.STRING)
 	@Column(name = "especie_veiculo")
 	private EspecieVeiculo especieVeiculo;
 
+	@NotNull(message="O fabricante é obrigatório.")
 	@ManyToOne
 	@JoinColumn(name = "fabricante_id")
 	private Fabricante fabricante;

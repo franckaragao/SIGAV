@@ -25,20 +25,20 @@
 			<form method="POST" th:object="${veiculo}" class="form-vertical  js-form-loading">
 				<th:block th:include="fragments/error_message"></th:block>
 			
-				<div class="form-group">
-					<label for="identificacao">Identificação</label>
+				<div class="form-group" th:classappend="${#fields.hasErrors('identificacao')} ? has-error">
+					<label for="identificacao" class="control-label">Identificação</label>
 					<input id="identificacao" type="text" class="form-control" th:field="*{identificacao}"/>
 				</div>
 				
-				<div class="form-group">
-					<label for="descricao">Descrição</label>
+				<div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
+					<label for="descricao" class="control-label">Descrição</label>
 					<textarea id="descricao" rows="3" class="form-control" th:field="*{descricao}"></textarea>
 				</div>
 				
 				<div class="row">
 					
-					<div class="col-sm-4  form-group">
-						<label for="fabricante">Fabricante</label>
+					<div class="col-sm-4  form-group" th:classappend="${#fields.hasErrors('fabricante')} ? has-error">
+						<label for="fabricante" class="control-label">Fabricante</label>
 						<div class="sv-field-action">
 							<select id="fabricante" class="form-control" th:field="*{fabricante}">
 								<option value="">Selecione um fabricante</option>
@@ -46,15 +46,15 @@
 							</select>
 							
 							<div class="sv-field-action__icon">
-								<a href="#" data-toggle="modal" data-target="#cadastroRapCateg">
+								<a href="#" data-toggle="modal" data-target="#cadastroRapidoFab">
 									<i class="glyphicon glyphicon-plus-sign sv-glyphicon-large"></i>
 								</a>
 							</div>
 							
 						</div>
 					</div>
-					<div class="col-sm-4  form-group">
-						<label for="categoria">Espécie</label>
+					<div class="col-sm-4  form-group" th:classappend="${#fields.hasErrors('especieVeiculo')} ? has-error">
+						<label for="categoria" class="control-label">Espécie</label>
 						<select id="categoria" class="form-control" th:field="*{especieVeiculo}">
 							<option value="">Selecione uma espécie de veículo</option>
 							<option th:each="esp : ${especies}" th:value="${esp}" th:text="${esp.description}"></option>
@@ -62,16 +62,16 @@
 					</div>
 					<div class="col-sm-4 form-group">
 						<label for="nLugares">Número de lugares</label>
-						<input id="nLugares" type="number" class="form-control" th:field="*{numeroLugares}"/>
+						<input id="nLugares" type="text" class="form-control js-plain" th:field="*{numeroLugares}"/>
 					</div>
 					
 				</div>
 				<div class="row">
 				
-					<div class="col-sm-4 form-group">
-						<label for="horimetro">Horimetro</label>
+					<div class="col-sm-4 form-group" th:classappend="${#fields.hasErrors('horimetro')} ? has-error"> 
+						<label for="horimetro" class="control-label">Horimetro</label>
 						<div class="input-group">
-							<input id="horimetro" type="text" class="form-control js-plain" th:field="*{horimetro}"/>
+							<input id="horimetro" type="text" class="form-control js-decimal" th:field="*{horimetro}"/>
 							<div class="input-group-addon">Km</div>
 						</div>
 					</div>
@@ -81,8 +81,8 @@
 						<input id="anoAquisicao" type="number" class="form-control" th:field="*{anoAquisicao}"/>
 					</div>
 					
-					<div class="col-lg-4  col-sm-6  form-group">
-						<label for="origin">Origem</label>
+					<div class="col-lg-4  col-sm-6  form-group" th:classappend="${#fields.hasErrors('origin')} ? has-error">
+						<label for="origin" class="control-label">Origem</label>
 						<div>
 							<th:block th:each="origin : ${origins}">
 								<div class="radio  radio-inline">
@@ -97,17 +97,17 @@
 				<div class="row">
 					
 					<div class="col-sm-4 form-group">
-						<label for="placa">Placa</label>
+						<label for="placa" class="control-label">Placa</label>
 						<input id="placa" type="text" class="form-control"/>
 					</div>
 					
 					<div class="col-sm-4 form-group">
-						<label for="cidade">Cidade</label>
+						<label for="cidade" class="control-label">Cidade</label>
 						<input id="cidade" type="text" class="form-control"/>
 					</div>
 					
 					<div class="col-sm-4  form-group">
-						<label for="uf">UF</label>
+						<label for="uf" class="control-label">UF</label>
 						<select id="uf" class="form-control">
 							<option value="">Selecione um estado</option>
 							<option value="1">Pale lager</option>
@@ -126,5 +126,9 @@
 		<div th:replace="fabricante/cadastro_rapido ::modal"></div>
 		
 	</section>
+	
+	<th:block layout:fragment="js-extra">
+		<script th:src="@{/javascripts/fabricante.cadastro-rapido.js}"></script>
+	</th:block>
 </body>
 </html>
