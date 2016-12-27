@@ -2,7 +2,8 @@
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="'layout/layout_default'">
+	layout:decorator="'layout/layout_default'"
+	xmlns:sigav="http://sigav.faj.com">
 
 <head>
 	<title>Cadastro Veículo</title>
@@ -25,19 +26,19 @@
 			<form method="POST" th:object="${veiculo}" class="form-vertical  js-form-loading">
 				<th:block th:include="fragments/error_message"></th:block>
 			
-				<div class="form-group" th:classappend="${#fields.hasErrors('identificacao')} ? has-error">
+				<div class="form-group" sigav:classforerror="identificacao">
 					<label for="identificacao" class="control-label">Identificação</label>
 					<input id="identificacao" type="text" class="form-control" th:field="*{identificacao}"/>
 				</div>
 				
-				<div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
+				<div class="form-group" sigav:classforerror="descricao">
 					<label for="descricao" class="control-label">Descrição</label>
 					<textarea id="descricao" rows="3" class="form-control" th:field="*{descricao}"></textarea>
 				</div>
 				
 				<div class="row">
 					
-					<div class="col-sm-4  form-group" th:classappend="${#fields.hasErrors('fabricante')} ? has-error">
+					<div class="col-sm-4  form-group"  sigav:classforerror="fabricante">
 						<label for="fabricante" class="control-label">Fabricante</label>
 						<div class="sv-field-action">
 							<select id="fabricante" class="form-control" th:field="*{fabricante}">
@@ -53,9 +54,9 @@
 							
 						</div>
 					</div>
-					<div class="col-sm-4  form-group" th:classappend="${#fields.hasErrors('especieVeiculo')} ? has-error">
-						<label for="categoria" class="control-label">Espécie</label>
-						<select id="categoria" class="form-control" th:field="*{especieVeiculo}">
+					<div class="col-sm-4  form-group" sigav:classforerror="especieVeiculo">
+						<label for="especie" class="control-label">Espécie</label>
+						<select id="especie" class="form-control" th:field="*{especieVeiculo}">
 							<option value="">Selecione uma espécie de veículo</option>
 							<option th:each="esp : ${especies}" th:value="${esp}" th:text="${esp.description}"></option>
 						</select>
@@ -68,7 +69,7 @@
 				</div>
 				<div class="row">
 				
-					<div class="col-sm-4 form-group" th:classappend="${#fields.hasErrors('horimetro')} ? has-error"> 
+					<div class="col-sm-4 form-group" sigav:classforerror="horimetro"> 
 						<label for="horimetro" class="control-label">Horimetro</label>
 						<div class="input-group">
 							<input id="horimetro" type="text" class="form-control js-decimal" th:field="*{horimetro}"/>
@@ -81,7 +82,7 @@
 						<input id="anoAquisicao" type="number" class="form-control" th:field="*{anoAquisicao}"/>
 					</div>
 					
-					<div class="col-lg-4  col-sm-6  form-group" th:classappend="${#fields.hasErrors('origin')} ? has-error">
+					<div class="col-lg-4  col-sm-6  form-group" sigav:classforerror="origin">
 						<label for="origin" class="control-label">Origem</label>
 						<div>
 							<th:block th:each="origin : ${origins}">
@@ -96,7 +97,7 @@
 				</div>
 				<div class="row">
 					
-					<div class="col-sm-4 form-group" th:classappend="${#fields.hasErrors('placa')} ? has-error">
+					<div class="col-sm-4 form-group" sigav:classforerror="placa">
 						<label for="placa" class="control-label">Placa</label>
 						<input id="placa" type="text" class="form-control" th:field="*{placa}"/>
 					</div>

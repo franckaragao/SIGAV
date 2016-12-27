@@ -27,6 +27,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import br.edu.ifpb.SIGAV.controller.VeiculoController;
 import br.edu.ifpb.SIGAV.controller.converter.FabricanteConverter;
+import br.edu.ifpb.SIGAV.thymeleaf.dialect.SigavDialect;
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 /**
@@ -76,6 +77,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		engine.setTemplateResolver(templateResolver());
 
 		engine.addDialect(new LayoutDialect());
+		engine.addDialect(new SigavDialect());
 		return engine;
 	}
 
