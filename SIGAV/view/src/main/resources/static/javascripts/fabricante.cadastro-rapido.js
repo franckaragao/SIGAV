@@ -1,61 +1,66 @@
-$(function(){
-	var modal = $('#cadastroRapidoFab');
-	var btnSave = modal.find('.js-btn-save-fabricante');
-	var form = modal.find('form');
-	var url = form.attr('action');
-	var inputModal = $('#nomeFabricante');
-	var containerError = $('.js-message');
+var SIGAV = SIGAV || {};
+
+SIGAV.CadastroFabricante = (function() {
 	
-	modal.on('shown.bs.modal', onModalShow);
-	modal.on('hide.bs.modal', onModalClose);
-	btnSave.on('click', onSaveFabricante)
+	function CadastroFabricante(){
+		this.modal = $('#cadastroRapidoFab');
+		this.btnSave = this.modal.find('.js-btn-save-fabricante');
+		this.form = this.modal.find('form');
+		this.url = this.form.attr('action');
+		this.inputModal = $('#nomeFabricante');
+		this.containerError = $('.js-message');
+	};
 	
-	/**
-	 * 
-	 */
+	CadastroFabricante.prototype.iniciar = function(){
+		this.modal.on('shown.bs.modal', onModalShow.bind(this));
+		this.modal.on('hide.bs.modal', onModalClose.bind(this));
+		this.btnSave.on('click', onSaveFabricante.bind(this));
+	};
+	
 	function onSaveFabricante(){
-		var nomeFabricante = inputModal.val().trim();
+		var nomeFabricante = this.inputModal.val().trim();
 		$.ajax({
-			url: url,
+			url: this.url,
 			method : 'POST',
 			contentType: "application/json",
 			data: JSON.stringify({'nome': nomeFabricante}),
-			error: onSaveError,
-			success: onSaveSuccess
+			error: onSaveError.bind(this),
+			success: onSaveSuccess.bind(this)
 		});
 	};
 	
-	/**
-	 * 
-	 */
 	function onSaveSuccess(fabricante){
 		var selectFab = $('#fabricante');
 		selectFab.append('<option value=' + fabricante.id + '>' + fabricante.nome + '</option>');
 		selectFab.val(fabricante.id);
-		modal.modal('hide');
+		this.modal.modal('hide');
 	};
 	
-	/**
-	 * 
-	 */
 	function onSaveError(response){
-		containerError.removeClass('hidden');
-		containerError.html('<span>' +response.responseText+ '</span>');
-		form.find('.form-group').addClass('has-error');
+		this.form.on('submit', function(event){event.preventDefault()});
+		this.containerError.removeClass('hidden');
+		this.containerError.html('<span>' +response.responseText+ '</span>');
+		this.form.find('.form-group').addClass('has-error');
 	};
 	
 	function onModalShow(){
-		inputModal.focus();
+		this.inputModal.focus();
 	};
 	
 	function onModalClose(){
-		inputModal.val('');
-		containerError.addClass('hidden');
-		form.find('.form-group').removeClass('has-error');
+		this.inputModal.val('');
+		this.containerError.addClass('hidden');
+		this.form.find('.form-group').removeClass('has-error');
 		
 	};
 	
-	form.on('submit', function(event){
-		event.preventDefault();
-	});
+	return CadastroFabricante;
+	
+})();
+
+$(function(){
+
+	cadastroFabricante = new SIGAV.CadastroFabricante();
+	cadastroFabricante.iniciar();
+	
 });
