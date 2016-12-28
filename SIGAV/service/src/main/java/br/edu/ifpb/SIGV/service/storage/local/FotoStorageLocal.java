@@ -61,6 +61,18 @@ public class FotoStorageLocal implements FotoStorage{
 		}
 		return fileName;
 	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public byte[] getFotoTemporaria(String name) {
+		try {
+			return Files.readAllBytes(this.localTemp.resolve(name));
+		} catch (IOException e) {
+			throw new RuntimeException("Erro ao recuperar foto", e);	
+		}
+	}
 	
 	/**
 	 * Gera um ID aletório e concatena com nome;
@@ -93,4 +105,5 @@ public class FotoStorageLocal implements FotoStorage{
 			throw new RuntimeException("Erro criando pasta para salvar foto", e);
 		}
 	}
+
 }
