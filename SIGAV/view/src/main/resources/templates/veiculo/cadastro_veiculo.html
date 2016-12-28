@@ -123,7 +123,7 @@
 						<input type="hidden" th:field="*{contentType}"/>
 					
 						<label class="control-label">Foto do Veículo</label>
-						<div class="js-local-foto">
+						<div class="js-local-foto" th:attr="data-url-fotos=@{/fotos}">
 							<div id="upload-drop" class="bw-upload">
 								<i class="glyphicon  glyphicon-cloud-upload"></i>
 								<span>Arraste a foto aqui ou </span>
@@ -149,47 +149,7 @@
 		<script th:src="@{/javascripts/vendors/uikit.min.js}"></script>
 		<script th:src="@{/javascripts/vendors/upload.min.js}"></script>
 		<script th:src="@{/javascripts/vendors/handlebars.min.js}"></script>
-		
-		
-		<script>
-		$(function() {
-			var settings = {
-					type: 'json',
-					filelimit: 1,
-					allow: '*.(jpg|jpeg|png)',
-					action: '/view/fotos',
-					complete: function(response){
-						var inputNomeFoto = $('input[name=foto]');
-						var inputContentType = $('input[name=contentType]');
-						
-						var htmlFotoTemplate = $('#foto-veiculo').html();
-						var template = Handlebars.compile(htmlFotoTemplate);
-						var htmlFoto = template({nomeFoto: response.nome});
-
-						var containerFoto = $('.js-local-foto');
-
-						var uploadDrop = $('#upload-drop');
-
-						uploadDrop.addClass('hidden');
-						
-						inputNomeFoto.val(response.nome);
-						inputContentType.val(response.contentType);
-												
-						containerFoto.append(htmlFoto);
-						
-						$('.js-remove-foto').on('click', function() {
-							$('.js-foto-veiculo').remove();
-							uploadDrop.removeClass('hidden');
-							inputNomeFoto.val('');
-							inputContentType.val('');
-						});
-					}
-			};
-			
-			UIkit.uploadSelect($('#upload-select'), settings);
-			UIkit.uploadDrop($('#upload-drop'), settings);
-		});
-		</script>
+		<script th:src="@{/javascripts/veiculo.upload-foto.js}"></script>
 	</th:block>
 </body>
 </html>
