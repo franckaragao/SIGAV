@@ -1,9 +1,11 @@
 package br.edu.ifpb.SIGV.service.storage.local;
 
+import java.io.File;
 import java.io.IOException;
 import static java.nio.file.FileSystems.getDefault;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,11 +30,51 @@ public class FotoStorageLocal implements FotoStorage{
 		this(getDefault().getPath(System.getenv("HOME"), ".sigav"));
 	}
 	
+	/**
+	 * 
+	 * @param path
+	 */
 	public FotoStorageLocal(Path path) {
 		this.local = path;
 		creatFolders();
 	}
 
+
+	/**
+	 * 
+	 */
+	@Override
+	public String saveLocalTemp(MultipartFile[] files) {
+		String fileName = null;
+		if(files != null && files.length > 0){
+			MultipartFile file = files[0];
+			
+			fileName = this.generateFileName(file.getOriginalFilename());
+			File dir = new File(this.localTemp.toAbsolutePath().toString() + 
+							getDefault().getSeparator() + fileName);
+			
+			try {
+				file.transferTo(dir);
+			} catch (IllegalStateException | IOException e) {
+				throw new RuntimeException("Erro ao salvar foto", e);			
+			}
+		}
+		return fileName;
+	}
+	
+	/**
+	 * Gera um ID aletório e concatena com nome;
+	 * 
+	 * @param originalName
+	 * @return
+	 */
+	private String generateFileName(String originalName) {
+		String newName = UUID.randomUUID().toString()+" - "+ originalName;
+		
+		return newName;
+		
+	}
+	
 	/**
 	 * 
 	 */
@@ -50,10 +92,5 @@ public class FotoStorageLocal implements FotoStorage{
 		} catch (IOException e) {
 			throw new RuntimeException("Erro criando pasta para salvar foto", e);
 		}
-	}
-
-	@Override
-	public void saveLocalTemp(MultipartFile[] files) {
-		System.out.println("Salvando temporariamente");
 	}
 }

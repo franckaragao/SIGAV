@@ -12,7 +12,8 @@ public interface FotoStorage {
 	/**
 	 * 
 	 * @param files
+	 * @return 
 	 */
-	void saveLocalTemp(MultipartFile files[]);
+	String saveLocalTemp(MultipartFile files[]);
 
 }
