@@ -1,4 +1,4 @@
-package br.edu.ifpb.SIGV.service.exeptions;
+package br.edu.ifpb.SIGV.exeptions;
 
 /**
  * 

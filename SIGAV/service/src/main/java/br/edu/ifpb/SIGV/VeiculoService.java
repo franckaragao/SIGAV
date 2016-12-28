@@ -1,4 +1,4 @@
-package br.edu.ifpb.SIGV.service;
+package br.edu.ifpb.SIGV;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.edu.ifpb.SIGAV.domain.Veiculo;
 import br.edu.ifpb.SIGAV.repository.VeiculoRepository;
-import br.edu.ifpb.SIGV.service.event.VeiculoEvent;
+import br.edu.ifpb.SIGV.event.VeiculoEvent;
 
 /**
  * 

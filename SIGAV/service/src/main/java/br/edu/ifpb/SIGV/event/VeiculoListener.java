@@ -1,10 +1,10 @@
-package br.edu.ifpb.SIGV.service.event;
+package br.edu.ifpb.SIGV.event;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
-import br.edu.ifpb.SIGV.service.storage.FotoStorage;
+import br.edu.ifpb.SIGV.storage.FotoStorage;
 
 /**
  * Registro de ouvintes para eventos relacionados

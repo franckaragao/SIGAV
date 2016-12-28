@@ -11,8 +11,8 @@ import org.springframework.web.context.request.async.DeferredResult;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.edu.ifpb.SIGAV.dto.FotoDTO;
-import br.edu.ifpb.SIGV.service.storage.FotoStorage;
-import br.edu.ifpb.SIGV.service.storage.FotoStorageRunnable;
+import br.edu.ifpb.SIGV.storage.FotoStorage;
+import br.edu.ifpb.SIGV.storage.FotoStorageRunnable;
 
 /**
  * 

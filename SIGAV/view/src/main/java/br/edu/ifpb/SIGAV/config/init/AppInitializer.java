@@ -9,7 +9,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import br.edu.ifpb.SIGAV.config.JPAConfig;
 import br.edu.ifpb.SIGAV.config.WebConfig;
-import br.edu.ifpb.SIGV.service.config.ServiceConfig;
+import br.edu.ifpb.SIGV.config.ServiceConfig;
 
 /**
  * Configuração do Dispatcher servlet (Front Controller do spring)

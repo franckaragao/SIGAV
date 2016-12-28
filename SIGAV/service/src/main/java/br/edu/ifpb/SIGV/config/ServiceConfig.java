@@ -1,12 +1,12 @@
-package br.edu.ifpb.SIGV.service.config;
+package br.edu.ifpb.SIGV.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import br.edu.ifpb.SIGV.service.VeiculoService;
-import br.edu.ifpb.SIGV.service.storage.FotoStorage;
-import br.edu.ifpb.SIGV.service.storage.local.FotoStorageLocal;
+import br.edu.ifpb.SIGV.VeiculoService;
+import br.edu.ifpb.SIGV.storage.FotoStorage;
+import br.edu.ifpb.SIGV.storage.local.FotoStorageLocal;
 
 /**
  * Configuração da camada de serviço.

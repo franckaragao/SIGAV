@@ -1,8 +1,9 @@
-package br.edu.ifpb.SIGV.service.storage.local;
+package br.edu.ifpb.SIGV.storage.local;
+
+import static java.nio.file.FileSystems.getDefault;
 
 import java.io.File;
 import java.io.IOException;
-import static java.nio.file.FileSystems.getDefault;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.UUID;
@@ -11,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 
-import br.edu.ifpb.SIGV.service.storage.FotoStorage;
+import br.edu.ifpb.SIGV.storage.FotoStorage;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.name.Rename;
 

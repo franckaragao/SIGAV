@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import br.edu.ifpb.SIGV.service.exeptions.NomeFabricanteExistenteException;
+import br.edu.ifpb.SIGV.exeptions.NomeFabricanteExistenteException;
 
 /**
  * Controller advice tratar excessões lançadas que NÃO foram

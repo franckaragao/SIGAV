@@ -1,4 +1,4 @@
-package br.edu.ifpb.SIGV.service.storage;
+package br.edu.ifpb.SIGV.storage;
 
 import org.springframework.web.context.request.async.DeferredResult;
 import org.springframework.web.multipart.MultipartFile;

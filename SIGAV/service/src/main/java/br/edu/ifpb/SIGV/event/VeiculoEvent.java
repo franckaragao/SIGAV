@@ -1,4 +1,4 @@
-package br.edu.ifpb.SIGV.service.event;
+package br.edu.ifpb.SIGV.event;
 
 import org.springframework.util.StringUtils;
 

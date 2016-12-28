@@ -17,7 +17,7 @@ import br.edu.ifpb.SIGAV.enumerations.EspecieVeiculo;
 import br.edu.ifpb.SIGAV.enumerations.Origin;
 import br.edu.ifpb.SIGAV.repository.FabricanteRepository;
 import br.edu.ifpb.SIGAV.repository.VeiculoRepository;
-import br.edu.ifpb.SIGV.service.VeiculoService;
+import br.edu.ifpb.SIGV.VeiculoService;
 
 /**
  * 

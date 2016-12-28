@@ -1,4 +1,4 @@
-package br.edu.ifpb.SIGV.service;
+package br.edu.ifpb.SIGV;
 
 import java.util.Optional;
 
@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.edu.ifpb.SIGAV.domain.Fabricante;
 import br.edu.ifpb.SIGAV.repository.FabricanteRepository;
-import br.edu.ifpb.SIGV.service.exeptions.NomeFabricanteExistenteException;
+import br.edu.ifpb.SIGV.exeptions.NomeFabricanteExistenteException;
 
 /**
  * 
