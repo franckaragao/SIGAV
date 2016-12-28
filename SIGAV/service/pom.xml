@@ -21,7 +21,7 @@
 			<artifactId>data</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		
+
 		<!-- Spring MVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -32,6 +32,11 @@
 					<artifactId>commons-logging</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>net.coobird</groupId>
+			<artifactId>thumbnailator</artifactId>
 		</dependency>
 	</dependencies>
 </project>

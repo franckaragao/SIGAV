@@ -16,8 +16,10 @@ public interface FotoStorage {
 	 */
 	String saveLocalTemp(MultipartFile files[]);
 	
-	void save(String photo);
+	void save(String foto);
 
 	byte[] getFotoTemporaria(String name);
+
+	byte[] getFoto(String foto);
 
 }

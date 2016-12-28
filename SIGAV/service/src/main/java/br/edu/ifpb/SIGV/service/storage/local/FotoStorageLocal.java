@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.edu.ifpb.SIGV.service.storage.FotoStorage;
+import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.name.Rename;
 
 /**
  * 
@@ -70,12 +72,21 @@ public class FotoStorageLocal implements FotoStorage{
 		try {
 			return Files.readAllBytes(this.localTemp.resolve(name));
 		} catch (IOException e) {
+			throw new RuntimeException("Erro ao recuperar foto temporaria", e);	
+		}
+	}
+	
+	@Override
+	public byte[] getFoto(String foto) {
+		try {
+			return Files.readAllBytes(this.local.resolve(foto));
+		} catch (IOException e) {
 			throw new RuntimeException("Erro ao recuperar foto", e);	
 		}
 	}
 	
 	/**
-	 * 
+	 * Move para local e gera o thumbnail da foto salva.
 	 */
 	@Override
 	public void save(String photo) {
@@ -84,6 +95,12 @@ public class FotoStorageLocal implements FotoStorage{
 			
 		} catch (IOException e) {
 			throw new RuntimeException("Erro ao mover foto para local", e);	
+		}
+		
+		try {
+			Thumbnails.of(this.local.resolve(photo).toString()).size(40, 29).toFiles(Rename.PREFIX_DOT_THUMBNAIL);
+		} catch (IOException e) {
+			throw new RuntimeException("Erro ao gerar thumbnail", e);
 		}
 	}
 	
@@ -117,5 +134,4 @@ public class FotoStorageLocal implements FotoStorage{
 			throw new RuntimeException("Erro criando pasta para salvar foto", e);
 		}
 	}
-
 }

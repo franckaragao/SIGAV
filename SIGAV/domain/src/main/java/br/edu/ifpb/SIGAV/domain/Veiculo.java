@@ -20,6 +20,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.util.StringUtils;
 
 import br.edu.ifpb.SIGAV.enumerations.EspecieVeiculo;
 import br.edu.ifpb.SIGAV.enumerations.Origin;
@@ -120,6 +121,10 @@ public class Veiculo implements Serializable {
 
 	public String getFoto() {
 		return foto;
+	}
+	
+	public String getFotoOrMock(){
+		return StringUtils.isEmpty(foto) ? "car-mock.png":foto;
 	}
 
 	public void setFoto(String foto) {

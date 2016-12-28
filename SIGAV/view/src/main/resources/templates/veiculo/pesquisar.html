@@ -111,7 +111,7 @@
 					<tbody>
 						<tr th:each="veiculo : ${veiculos}">
 							<td class="text-center">
-								<img th:src="@{/fotos/temp/{foto}(foto=${veiculo.foto})}" class="img-responsive"/>
+								<img th:src="@{/fotos/thumbnail.{foto}(foto=${veiculo.fotoOrMock})}" class="img-responsive"/>
 							</td>
 							<td class="text-center" th:text="${veiculo.placa}">AAA-1234</td>
 							<td th:text="${veiculo.identificacao}">veiculo Stella</td>

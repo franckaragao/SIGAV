@@ -48,6 +48,13 @@ public class FotoController {
 		
 		return fotoStorage.getFotoTemporaria(name);
 		
+	} 
+
+	@GetMapping(value="/{name:.*}")
+	public byte[] getFoto(@PathVariable String name){
+		
+		return fotoStorage.getFoto(name);
+		
 	}
 
 }
