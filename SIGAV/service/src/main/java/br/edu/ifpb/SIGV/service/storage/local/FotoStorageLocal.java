@@ -75,6 +75,19 @@ public class FotoStorageLocal implements FotoStorage{
 	}
 	
 	/**
+	 * 
+	 */
+	@Override
+	public void save(String photo) {
+		try {
+			Files.move(this.localTemp.resolve(photo), this.local.resolve(photo));
+			
+		} catch (IOException e) {
+			throw new RuntimeException("Erro ao mover foto para local", e);	
+		}
+	}
+	
+	/**
 	 * Gera um ID aletório e concatena com nome;
 	 * 
 	 * @param originalName
@@ -84,7 +97,6 @@ public class FotoStorageLocal implements FotoStorage{
 		String newName = UUID.randomUUID().toString()+" - "+ originalName;
 		
 		return newName;
-		
 	}
 	
 	/**

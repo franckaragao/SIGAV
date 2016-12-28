@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -65,7 +66,8 @@ public class Veiculo implements Serializable {
 	@Column(name = "numero_lugares")
 	private Integer numeroLugares;
 
-	@NotBlank(message="O horimetro é ogrigatório.")
+	@NotNull(message = "O Horimetro é obrigatório")
+	@DecimalMin(value = "0", message = "Horimetro não pdoe ser negativo.")
 	@Column(name = "horimetro")
 	private BigDecimal horimetro;
 
