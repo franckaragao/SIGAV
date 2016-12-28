@@ -25,19 +25,19 @@
 			<form method="POST" th:object="${veiculo}" class="form-vertical  js-form-loading">
 				<sigav:message/>
 			
-				<div class="form-group" sigav:classforerror="identificacao">
+				<div class="form-group sv-required" sigav:classforerror="identificacao">
 					<label for="identificacao" class="control-label">Identificação</label>
 					<input id="identificacao" type="text" class="form-control" th:field="*{identificacao}"/>
 				</div>
 				
-				<div class="form-group" sigav:classforerror="descricao">
+				<div class="form-group sv-required" sigav:classforerror="descricao">
 					<label for="descricao" class="control-label">Descrição</label>
 					<textarea id="descricao" rows="3" class="form-control" th:field="*{descricao}"></textarea>
 				</div>
 				
 				<div class="row">
 					
-					<div class="col-sm-4  form-group"  sigav:classforerror="fabricante">
+					<div class="col-sm-4  form-group sv-required"  sigav:classforerror="fabricante">
 						<label for="fabricante" class="control-label">Fabricante</label>
 						<div class="sv-field-action">
 							<select id="fabricante" class="form-control" th:field="*{fabricante}">
@@ -53,7 +53,7 @@
 							
 						</div>
 					</div>
-					<div class="col-sm-4  form-group" sigav:classforerror="especieVeiculo">
+					<div class="col-sm-4  form-group sv-required" sigav:classforerror="especieVeiculo">
 						<label for="especie" class="control-label">Espécie</label>
 						<select id="especie" class="form-control" th:field="*{especieVeiculo}">
 							<option value="">Selecione uma espécie de veículo</option>
@@ -68,7 +68,7 @@
 				</div>
 				<div class="row">
 				
-					<div class="col-sm-4 form-group" sigav:classforerror="horimetro"> 
+					<div class="col-sm-4 form-group sv-required" sigav:classforerror="horimetro"> 
 						<label for="horimetro" class="control-label">Horimetro</label>
 						<div class="input-group">
 							<input id="horimetro" type="text" class="form-control js-decimal" th:field="*{horimetro}"/>
@@ -81,7 +81,7 @@
 						<input id="anoAquisicao" type="number" class="form-control" th:field="*{anoAquisicao}"/>
 					</div>
 					
-					<div class="col-lg-4  col-sm-6  form-group" sigav:classforerror="origin">
+					<div class="col-lg-4  col-sm-6  form-group sv-required" sigav:classforerror="origin">
 						<label for="origin" class="control-label">Origem</label>
 						<div>
 							<th:block th:each="origin : ${origins}">
@@ -96,7 +96,7 @@
 				</div>
 				<div class="row">
 					
-					<div class="col-sm-4 form-group" sigav:classforerror="placa">
+					<div class="col-sm-4 form-group sv-required" sigav:classforerror="placa">
 						<label for="placa" class="control-label">Placa</label>
 						<input id="placa" type="text" class="form-control" th:field="*{placa}"/>
 					</div>
@@ -124,10 +124,10 @@
 					
 						<label class="control-label">Foto do Veículo</label>
 						<div class="js-local-foto" th:attr="data-url-fotos=@{/fotos}">
-							<div id="upload-drop" class="bw-upload">
+							<div id="upload-drop" class="sv-upload">
 								<i class="glyphicon  glyphicon-cloud-upload"></i>
 								<span>Arraste a foto aqui ou </span>
-								<a class="bw-upload-form-file">selecione <input id="upload-select" type="file" accept=".jpg,.jpeg,.png"/></a>
+								<a class="sv-upload-form-file">selecione <input id="upload-select" type="file" accept=".jpg,.jpeg,.png"/></a>
 							</div>
 						</div>
 					</div>

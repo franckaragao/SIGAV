@@ -1,10 +1,10 @@
-/* 
+
+ /* 
 ############
-# COMPONENTS
+# UTILS
 ############ 
 */
 
- 
 /*Field action */
 .sv-field-action{
 	display: flex;	
@@ -15,9 +15,14 @@
 	margin: 6px 0 0 5px;
 }
 
+.sv-required > .control-label:after {
+	content: "*";
+}
+
+
 /* 
 ############
-# UTILS
+# COMPONENTS
 ############ 
 */
 
@@ -26,7 +31,7 @@
 }
 
 /* Upload */
-.bw-upload {
+.sv-upload {
 	padding: 15px;
 	
 	border: 1px dashed #ddd;
@@ -36,7 +41,7 @@
 	text-align: center;
 }
 
-.bw-upload-form-file {
+.sv-upload-form-file {
 	display: inline-block;
     vertical-align: middle;
     position: relative;
@@ -44,7 +49,7 @@
     margin-bottom: 1px;
 }
 
-.bw-upload-form-file > input[type=file] {
+.sv-upload-form-file > input[type=file] {
 	position: absolute;
     top: 0;
     left: 0;
