@@ -70,22 +70,28 @@ public class Veiculo implements Serializable {
 
 	@Column(name = "ano_aquisicao")
 	private Integer anoAquisicao;
-	
+
 	@Placa
-	@NotBlank(message="Placa é obrigatória.")
+	@NotBlank(message = "Placa é obrigatória.")
 	private String placa;
 
+	private String foto;
+
+	@Column(name = "content_type")
+	private String contentType;
+
 	public Veiculo() {
-	
+
 	}
-	
+
 	/**
 	 * Metódo callback do JPA.
 	 * 
 	 * Executa antes de inserir ou atualizar no BD.
 	 */
-	@PrePersist @PreUpdate
-	private void prePersistUpdate(){
+	@PrePersist
+	@PreUpdate
+	private void prePersistUpdate() {
 		placa = placa.toUpperCase();
 	}
 
@@ -107,6 +113,22 @@ public class Veiculo implements Serializable {
 
 	public String getDescricao() {
 		return descricao;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
 	}
 
 	public void setDescricao(String descricao) {

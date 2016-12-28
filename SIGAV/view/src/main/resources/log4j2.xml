@@ -8,7 +8,7 @@
 	</Appenders>
 
 	<Loggers>
-		<Logger name="br.edu.ifpb.SIGAV.controller" level="error" />
+		<Logger name="br.edu.ifpb" level="debug" />
 
 		<Logger name="org.hibernate.SQL" level="debug" />
 
