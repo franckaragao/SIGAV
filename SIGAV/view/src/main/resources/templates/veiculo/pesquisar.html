@@ -92,16 +92,18 @@
 			
 			<button type="submit" class="btn  btn-primary">Pesquisar</button>
 		</form>
-			<div class="table-responsive  bw-tabela-simples">
+			<div class="table-responsive  sv-tabela-simples">
 				<table class="table  table-hover">
 					<thead>
 						<tr>
 							<th class="table-veiculos-col-foto"></th>
 							<th class="table-veiculos-col-placa">Placa</th>
 							<th class="table-veiculos-col-identificacao">Identidicação</th>
-							<th class="table-veiculos-col-fabricante">Fabricante</th>
 							<th class="table-veiculos-col-origem">Origem</th>
-							<th class="table-veiculos-col-num-lugares">Nº Lugares</th>
+							<th class="table-veiculos-col-fabricante">Fabricante</th>
+							<th class="table-veiculos-col-especie">Espécie</th>
+							<th class="table-veiculos-col-num-lugares">Lugares</th>
+							<th class="table-veiculos-col-horimetro">Horimetro</th>
 							<th class="table-veiculos-col-acoes"></th>
 						</tr>
 					</thead>
@@ -113,9 +115,11 @@
 							</td>
 							<td class="text-center" th:text="${veiculo.placa}">AAA-1234</td>
 							<td th:text="${veiculo.identificacao}">veiculo Stella</td>
+							<td th:text="${veiculo.origin.description}">Alocado</td>
 							<td th:text="${veiculo.fabricante.nome}">Lager</td>
-							<td th:text="${veiculo.origin.description}">Internacional</td>
-							<td class="text-right" th:text="|${veiculo.numeroLugares}|">8</td>
+							<td th:text="${veiculo.especieVeiculo.description}">Trator</td>
+							<td th:text="|${veiculo.numeroLugares}|">8</td>
+							<td th:text="|${veiculo.horimetro}|">8</td>
 							<td class="text-center">
 								<a class="btn  btn-link  btn-xs" title="Editar"> 
 									<i class="glyphicon glyphicon-pencil"></i>
@@ -124,6 +128,9 @@
 									<i class="glyphicon glyphicon-remove"></i>
 								</a>
 							</td>
+						</tr>
+						<tr th:if="${#lists.isEmpty(veiculos)}" >
+							<td colspan="9">Nenhum veículo encontrado</td>
 						</tr>
 					</tbody>
 				</table>

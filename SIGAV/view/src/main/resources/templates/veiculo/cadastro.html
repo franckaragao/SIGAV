@@ -24,10 +24,15 @@
 			
 			<form method="POST" th:object="${veiculo}" class="form-vertical  js-form-loading">
 				<sigav:message/>
-			
-				<div class="form-group sv-required" sigav:classforerror="identificacao">
-					<label for="identificacao" class="control-label">Identificação</label>
-					<input id="identificacao" type="text" class="form-control" th:field="*{identificacao}"/>
+				<div class="row">
+					<div class="col-sm-3 form-group sv-required" sigav:classforerror="placa">
+						<label for="placa" class="control-label">Placa</label>
+						<input id="placa" type="text" class="form-control" th:field="*{placa}"/>
+					</div>
+					<div class="col-sm-9 form-group sv-required" sigav:classforerror="identificacao">
+						<label for="identificacao" class="control-label">Identificação</label>
+						<input id="identificacao" type="text" class="form-control" th:field="*{identificacao}"/>
+					</div>
 				</div>
 				
 				<div class="form-group sv-required" sigav:classforerror="descricao">
@@ -93,27 +98,6 @@
 						</div>
 					</div>
 					
-				</div>
-				<div class="row">
-					
-					<div class="col-sm-4 form-group sv-required" sigav:classforerror="placa">
-						<label for="placa" class="control-label">Placa</label>
-						<input id="placa" type="text" class="form-control" th:field="*{placa}"/>
-					</div>
-					
-					<div class="col-sm-4 form-group">
-						<label for="cidade" class="control-label">Cidade</label>
-						<input id="cidade" type="text" class="form-control"/>
-					</div>
-					
-					<div class="col-sm-4  form-group">
-						<label for="uf" class="control-label">UF</label>
-						<select id="uf" class="form-control">
-							<option value="">Selecione um estado</option>
-							<option value="1">Pale lager</option>
-						</select>
-					</div>
-
 				</div>
 				
 				<div class="row">

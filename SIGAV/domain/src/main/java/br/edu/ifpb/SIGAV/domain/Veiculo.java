@@ -65,6 +65,7 @@ public class Veiculo implements Serializable {
 	@Column(name = "numero_lugares")
 	private Integer numeroLugares;
 
+	@NotBlank(message="O horimetro é ogrigatório.")
 	@Column(name = "horimetro")
 	private BigDecimal horimetro;
 

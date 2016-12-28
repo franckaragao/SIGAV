@@ -62,15 +62,15 @@
 }
 
 /* Tabela Simples */
-.bw-tabela-simples {
+.sv-tabela-simples {
 	margin-top: 15px;
 }
 
-.bw-tabela-simples table tr th {
+.sv-tabela-simples table tr th {
 	border-bottom-width: 1px;
 }
 
-.bw-tabela-simples table tr td {
+.sv-tabela-simples table tr td {
     border-top: none;
     border-bottom: 1px solid #e7eaec;
     padding: 10px;
@@ -91,7 +91,6 @@
 
 .table-veiculos-col-placa {
 	width: 90px;
-	text-align: center;
 }
 
 .table-veiculos-col-identificacao {
@@ -99,16 +98,23 @@
 }
 
 .table-veiculos-col-fabricante {
-	width: 120px;
+	width: 130px;
+}
+
+.table-veiculos-col-especie {
+	width: 130px;
+}
+
+.table-veiculos-col-horimetro {
+	width: 130px;
 }
 
 .table-veiculos-col-origem {
-	width: 100px;
+	width: 130px;
 }
 
 .table-veiculos-col-num-lugares {
-	width: 100px;
-	text-align: right;
+	width: 130px;
 }
 
 .table-veiculos-col-acoes {
