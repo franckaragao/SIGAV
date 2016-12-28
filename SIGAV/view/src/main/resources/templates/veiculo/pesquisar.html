@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/layout_default'"
+	xmlns:sigav="http://sigav.faj.com">
+
+<head>
+<title>Pesquisa de Veículos</title>
+</head>
+
+<body>
+	<section layout:fragment="content">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-10">
+					<h1>Pesquisa de veículos</h1>
+				</div>
+				
+				<div class="col-sm-2">
+					<div class="aw-page-header-controls">
+						<a class="btn  btn-default" th:href="@{/veiculos/novo}">
+							<i class="glyphicon  glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Novo Veículo</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container-fluid">
+		<form method="GET">
+			<div class="row">
+				<div class="form-group  col-sm-6">
+					<label class="control-label" for="placa">Placa</label>
+					<input type="text" class="form-control" id="placa" autofocus="autofocus"/>
+				</div>
+				
+				<div class="form-group  col-sm-6" >
+					<label class="control-label" for="identificacao">Identificação</label>
+					<input type="text" class="form-control" id="identificacao"/>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group  col-sm-6">
+					<label class="control-label" for="fabricante">Fabricante</label>
+					<select id="fabricante" class="form-control">
+	                    <option value="">Todos os fabricantes</option>
+	                    <option th:each="fabricante : ${fabricantes}" th:text="${fabricante.nome}" th:value="${fabricante.id}"></option>
+	                </select>
+				</div>
+				
+				<div class="form-group  col-sm-6">
+					<label class="control-label" for="Espécie">Espécie</label> 
+					<select id="Espécie" class="form-control">
+	                    <option value="">Todos as espécies</option>
+	                    <option th:each="especie : ${especies}" th:value="${especie}" th:text="${especie.description}"></option>
+	                </select>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group  col-sm-6">
+					<label class="control-label">Origem</label> 
+					<div>
+	  					<th:block th:each="origin : ${origens}">
+	  						<div class="radio  radio-inline">
+		    					<input th:id="|id_${origin}|" type="radio" th:value="${origin}" name="origin"/>
+		    					<label th:for="|id_${origin}|" th:text="${origin.description}">Nacional</label>
+	    					</div>
+	  					</th:block>
+	  					<div class="radio  radio-inline">
+		    				<input id="todasOrigens" type="radio" th:checked="*{origin} == null" name="origin"/>
+		    				<label for="todasOrigens" >Todas</label>
+	    				</div>
+					</div>
+				</div>
+				
+				<div class="col-sm-6  form-group">
+					<label for="numeroDe">Número de lugares</label>
+					<div class="form-inline">
+						<input type="text" class="form-control  aw-form-control-inline-sm  js-plain" id="numeroDe"/>
+						<label for="numeroAte" class="aw-form-label-between">até</label>
+						<input type="text" class="form-control  aw-form-control-inline-sm  js-plain" id="numeroAte"/>
+					</div>
+				</div>
+			</div>
+			
+			
+			<button type="submit" class="btn  btn-primary">Pesquisar</button>
+		</form>
+			<div class="table-responsive  bw-tabela-simples">
+				<table class="table  table-hover">
+					<thead>
+						<tr>
+							<th class="table-veiculos-col-foto"></th>
+							<th class="table-veiculos-col-placa">Placa</th>
+							<th class="table-veiculos-col-identificacao">Identidicação</th>
+							<th class="table-veiculos-col-fabricante">Fabricante</th>
+							<th class="table-veiculos-col-origem">Origem</th>
+							<th class="table-veiculos-col-num-lugares">Nº Lugares</th>
+							<th class="table-veiculos-col-acoes"></th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr th:each="veiculo : ${veiculos}">
+							<td class="text-center">
+								<img th:src="@{/fotos/temp/{foto}(foto=${veiculo.foto})}" class="img-responsive"/>
+							</td>
+							<td class="text-center" th:text="${veiculo.placa}">AAA-1234</td>
+							<td th:text="${veiculo.identificacao}">veiculo Stella</td>
+							<td th:text="${veiculo.fabricante.nome}">Lager</td>
+							<td th:text="${veiculo.origin.description}">Internacional</td>
+							<td class="text-right" th:text="|${veiculo.numeroLugares}|">8</td>
+							<td class="text-center">
+								<a class="btn  btn-link  btn-xs" title="Editar"> 
+									<i class="glyphicon glyphicon-pencil"></i>
+								</a>
+								<a class="btn  btn-link  btn-xs" title="Excluir">
+									<i class="glyphicon glyphicon-remove"></i>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+	
+	</div>
+		
+	</section>
+</body>
+</html>
