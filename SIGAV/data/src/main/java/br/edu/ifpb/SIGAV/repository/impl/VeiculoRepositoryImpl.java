@@ -1,4 +1,4 @@
-package br.edu.ifpb.SIGAV.repository.helper;
+package br.edu.ifpb.SIGAV.repository.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ import br.edu.ifpb.SIGAV.filter.VeiculoFilter;
  * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *
  */
-public class VeiculoRepositoryImpl implements VeiculoRepositoryQueries{
+public class VeiculoRepositoryImpl {
 	
 	@PersistenceContext
 	private EntityManager em;
@@ -28,7 +28,6 @@ public class VeiculoRepositoryImpl implements VeiculoRepositoryQueries{
 	/**
 	 * 
 	 */
-	@Override
 	public List<Veiculo> filter(VeiculoFilter filter) {
 
 		CriteriaBuilder criteria = em.getCriteriaBuilder();
