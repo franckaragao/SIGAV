@@ -16,6 +16,11 @@ import br.edu.ifpb.SIGAV.filter.VeiculoFilter;
 @Repository
 public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {
 	
+	/**
+	 * 
+	 * @param filter
+	 * @return
+	 */
 	List<Veiculo> filter(VeiculoFilter filter);
 	
 	

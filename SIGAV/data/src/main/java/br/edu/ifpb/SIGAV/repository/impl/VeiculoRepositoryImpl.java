@@ -22,6 +22,9 @@ import br.edu.ifpb.SIGAV.filter.VeiculoFilter;
  */
 public class VeiculoRepositoryImpl {
 	
+	/**
+	 * 
+	 */
 	@PersistenceContext
 	private EntityManager em;
 
@@ -53,10 +56,10 @@ public class VeiculoRepositoryImpl {
 	    if(!StringUtils.isEmpty(filter.getOrigin()))
 	    	predicates.add(criteria.equal(root.get("origin"), filter.getOrigin()));
 
-	    if(filter.getNumeroDe() != null)
+	    if(!StringUtils.isEmpty(filter.getNumeroDe()))
 	    	predicates.add(criteria.ge(root.get("numeroLugares"), filter.getNumeroDe()));
 	    
-	    if(filter.getNumeroAte() != null)
+	    if(!StringUtils.isEmpty(filter.getNumeroAte()))
 	    	predicates.add(criteria.le(root.get("numeroLugares"), filter.getNumeroAte()));
 	    
 	    
