@@ -31,23 +31,23 @@
 	</div>
 	
 	<div class="container-fluid">
-		<form method="GET">
+		<form method="GET" th:object="${veiculoFilter}">
 			<div class="row">
 				<div class="form-group  col-sm-6">
 					<label class="control-label" for="placa">Placa</label>
-					<input type="text" class="form-control" id="placa" autofocus="autofocus"/>
+					<input type="text" class="form-control" id="placa" th:field="*{placa}" autofocus="autofocus"/>
 				</div>
 				
 				<div class="form-group  col-sm-6" >
 					<label class="control-label" for="identificacao">Identificação</label>
-					<input type="text" class="form-control" id="identificacao"/>
+					<input type="text" class="form-control" id="identificacao" th:field="*{identificacao}"/>
 				</div>
 			</div>
 			
 			<div class="row">
 				<div class="form-group  col-sm-6">
 					<label class="control-label" for="fabricante">Fabricante</label>
-					<select id="fabricante" class="form-control">
+					<select id="fabricante" class="form-control" th:field="*{fabricante}">
 	                    <option value="">Todos os fabricantes</option>
 	                    <option th:each="fabricante : ${fabricantes}" th:text="${fabricante.nome}" th:value="${fabricante.id}"></option>
 	                </select>
@@ -55,7 +55,7 @@
 				
 				<div class="form-group  col-sm-6">
 					<label class="control-label" for="Espécie">Espécie</label> 
-					<select id="Espécie" class="form-control">
+					<select id="Espécie" class="form-control" th:field="*{especieVeiculo}">
 	                    <option value="">Todos as espécies</option>
 	                    <option th:each="especie : ${especies}" th:value="${especie}" th:text="${especie.description}"></option>
 	                </select>
@@ -68,7 +68,7 @@
 					<div>
 	  					<th:block th:each="origin : ${origens}">
 	  						<div class="radio  radio-inline">
-		    					<input th:id="|id_${origin}|" type="radio" th:value="${origin}" name="origin"/>
+		    					<input th:id="|id_${origin}|" type="radio" th:value="${origin}" th:field="*{origin}"/>
 		    					<label th:for="|id_${origin}|" th:text="${origin.description}">Nacional</label>
 	    					</div>
 	  					</th:block>
@@ -82,9 +82,9 @@
 				<div class="col-sm-6  form-group">
 					<label for="numeroDe">Número de lugares</label>
 					<div class="form-inline">
-						<input type="text" class="form-control  aw-form-control-inline-sm  js-plain" id="numeroDe"/>
+						<input type="text" class="form-control  aw-form-control-inline-sm  js-plain" id="numeroDe" th:field="*{numeroDe}"/>
 						<label for="numeroAte" class="aw-form-label-between">até</label>
-						<input type="text" class="form-control  aw-form-control-inline-sm  js-plain" id="numeroAte"/>
+						<input type="text" class="form-control  aw-form-control-inline-sm  js-plain" id="numeroAte" th:field="*{numeroAte}"/>
 					</div>
 				</div>
 			</div>

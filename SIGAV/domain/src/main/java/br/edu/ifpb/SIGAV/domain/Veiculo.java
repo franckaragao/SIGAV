@@ -122,9 +122,9 @@ public class Veiculo implements Serializable {
 	public String getFoto() {
 		return foto;
 	}
-	
-	public String getFotoOrMock(){
-		return StringUtils.isEmpty(foto) ? "car-mock.png":foto;
+
+	public String getFotoOrMock() {
+		return StringUtils.isEmpty(foto) ? "car-mock.png" : foto;
 	}
 
 	public void setFoto(String foto) {
@@ -264,6 +264,11 @@ public class Veiculo implements Serializable {
 		if (origin != other.origin)
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return ""+ placa;
 	}
 
 }

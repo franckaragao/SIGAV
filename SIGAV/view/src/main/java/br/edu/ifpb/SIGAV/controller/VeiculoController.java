@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.edu.ifpb.SIGAV.domain.Veiculo;
 import br.edu.ifpb.SIGAV.enumerations.EspecieVeiculo;
 import br.edu.ifpb.SIGAV.enumerations.Origin;
+import br.edu.ifpb.SIGAV.filter.VeiculoFilter;
 import br.edu.ifpb.SIGAV.repository.FabricanteRepository;
 import br.edu.ifpb.SIGAV.repository.VeiculoRepository;
 import br.edu.ifpb.SIGV.VeiculoService;
@@ -71,16 +72,21 @@ public class VeiculoController {
 		return new ModelAndView("redirect:/veiculos/novo");
 	}
 	
+	/**
+	 * 
+	 * @param veiculoFilter
+	 * @param result
+	 * @return
+	 */
 	@GetMapping
-	public ModelAndView pesquisar(){
+	public ModelAndView pesquisar(VeiculoFilter veiculoFilter, BindingResult result){
 		
 		ModelAndView mv = new ModelAndView("veiculo/pesquisar");
 		mv.addObject("fabricantes", fabricanteRepository.findAll());
 		mv.addObject("especies", EspecieVeiculo.values());
 		mv.addObject("origens", Origin.values());
 		
-		mv.addObject("veiculos", veiculoRepository.findAll());
-		
+		mv.addObject("veiculos", veiculoRepository.filter(veiculoFilter));
 		return mv;
 	}
 	
