@@ -1,9 +1,9 @@
 package br.edu.ifpb.SIGAV.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.edu.ifpb.SIGAV.controller.page.PageWrapper;
 import br.edu.ifpb.SIGAV.domain.Veiculo;
 import br.edu.ifpb.SIGAV.enumerations.EspecieVeiculo;
 import br.edu.ifpb.SIGAV.enumerations.Origin;
@@ -82,14 +83,15 @@ public class VeiculoController {
 	 * @return
 	 */
 	@GetMapping
-	public ModelAndView pesquisar(VeiculoFilter veiculoFilter, BindingResult result, @PageableDefault(size=3) Pageable pageable){
+	public ModelAndView pesquisar(VeiculoFilter veiculoFilter, BindingResult result, 
+			@PageableDefault(size=3) Pageable pageable, HttpServletRequest httpServletRequest){
 		
 		ModelAndView mv = new ModelAndView("veiculo/pesquisar");
 		mv.addObject("fabricantes", fabricanteRepository.findAll());
 		mv.addObject("especies", EspecieVeiculo.values());
 		mv.addObject("origens", Origin.values());
 		
-		Page<Veiculo> page = veiculoRepository.filter(veiculoFilter, pageable);
+		PageWrapper<Veiculo> page = new PageWrapper<>(veiculoRepository.filter(veiculoFilter, pageable), httpServletRequest);
 		System.out.println(page.getTotalPages());
 		mv.addObject("page", page);
 		return mv;

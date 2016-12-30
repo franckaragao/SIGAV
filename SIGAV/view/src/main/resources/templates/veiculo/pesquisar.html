@@ -145,7 +145,7 @@
 						</li>
 						<th:block th:each="p : ${#numbers.sequence(1, page.totalPages)}" th:with="numPage=${p - 1}">
 							<li th:class="${numPage == currentPage} ? active">
-								<a th:href="|?page=${numPage}|">[[${p}]]</a>
+								<a th:href="${page.urlTo(numPage)}">[[${p}]]</a>
 							</li>
 						</th:block>						
 
