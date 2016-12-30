@@ -1,7 +1,7 @@
 package br.edu.ifpb.SIGAV.repository;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -19,9 +19,10 @@ public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {
 	/**
 	 * 
 	 * @param filter
+	 * @param pageable 
 	 * @return
 	 */
-	List<Veiculo> filter(VeiculoFilter filter);
+	Page<Veiculo> filter(VeiculoFilter filter, Pageable pageable);
 	
 	
 

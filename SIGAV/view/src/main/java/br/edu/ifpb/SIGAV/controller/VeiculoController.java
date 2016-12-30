@@ -3,6 +3,9 @@ package br.edu.ifpb.SIGAV.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -79,14 +82,16 @@ public class VeiculoController {
 	 * @return
 	 */
 	@GetMapping
-	public ModelAndView pesquisar(VeiculoFilter veiculoFilter, BindingResult result){
+	public ModelAndView pesquisar(VeiculoFilter veiculoFilter, BindingResult result, @PageableDefault(size=3) Pageable pageable){
 		
 		ModelAndView mv = new ModelAndView("veiculo/pesquisar");
 		mv.addObject("fabricantes", fabricanteRepository.findAll());
 		mv.addObject("especies", EspecieVeiculo.values());
 		mv.addObject("origens", Origin.values());
 		
-		mv.addObject("veiculos", veiculoRepository.filter(veiculoFilter));
+		Page<Veiculo> page = veiculoRepository.filter(veiculoFilter, pageable);
+		System.out.println(page.getTotalPages());
+		mv.addObject("page", page);
 		return mv;
 	}
 	

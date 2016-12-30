@@ -109,7 +109,7 @@
 					</thead>
 					
 					<tbody>
-						<tr th:each="veiculo : ${veiculos}">
+						<tr th:each="veiculo : ${page.content}">
 							<td class="text-center">
 								<img th:src="@{/fotos/thumbnail.{foto}(foto=${veiculo.fotoOrMock})}" class="img-responsive"/>
 							</td>
@@ -129,11 +129,35 @@
 								</a>
 							</td>
 						</tr>
-						<tr th:if="${#lists.isEmpty(veiculos)}" >
+						<tr th:if="${#lists.isEmpty(page.content)}" >
 							<td colspan="9">Nenhum veículo encontrado</td>
 						</tr>
 					</tbody>
 				</table>
+			</div>
+			
+			<div class="col-sm-12 text-center" th:if="${not #lists.isEmpty(page.content)}">
+				<nav>
+				
+					<ul class="pagination pagination-sm">
+						<li class="disabled">
+							<a href="#"><span aria-hidden="true">&laquo;</span></a>
+						</li>
+						<th:block th:each="p : ${#numbers.sequence(1, page.totalPages)}">
+							<li>
+								<a th:href="|?page=${p - 1}|">[[${p}]]</a>
+							</li>
+						</th:block>						
+
+						
+						<li class="disabled">
+							<a href="#"><span aria-hidden="true">&raquo;</span></a>
+						</li>						
+					
+					</ul>
+				
+				</nav>
+			
 			</div>
 	
 	</div>
