@@ -98,11 +98,23 @@
 						<tr>
 							<th class="table-veiculos-col-foto"></th>
 							<th class="table-veiculos-col-placa">
-								<a>Placa
-									<span class="dropup"><span class="caret"></span></span>
+								<a th:href="${page.urlSortBy('placa')}" th:remove="${page.empty} ? tag">
+									<span>Placa</span>
+									<span class="dropup" th:remove="${page.isDescendent('placa')} ? tag"
+										th:if="${page.isOrder('placa')}">
+										<span class="caret"></span>
+									</span>
 								</a>
 							</th>
-							<th class="table-veiculos-col-identificacao">Identidicação</th>
+							<th class="table-veiculos-col-identificacao">
+								<a th:href="${page.urlSortBy('identificacao')}" th:remove="${page.empty} ? tag">
+									<span>Identificação</span>
+									<span class="dropup" th:remove="${page.isDescendent('identificacao')} ? tag"
+										th:if="${page.isOrder('identificacao')}">
+										<span class="caret"></span>
+									</span>
+								</a>
+							</th>
 							<th class="table-veiculos-col-origem">Origem</th>
 							<th class="table-veiculos-col-fabricante">Fabricante</th>
 							<th class="table-veiculos-col-especie">Espécie</th>
@@ -133,14 +145,14 @@
 								</a>
 							</td>
 						</tr>
-						<tr th:if="${#lists.isEmpty(page.content)}" >
+						<tr th:if="${page.empty}" >
 							<td colspan="9">Nenhum veículo encontrado</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 			
-			<div class="col-sm-12 text-center" th:if="${not #lists.isEmpty(page.content)}">
+			<div class="col-sm-12 text-center" th:if="${not page.empty}">
 				<nav th:with="currentPage=${page.number}">
 				
 					<ul class="pagination pagination-sm">
