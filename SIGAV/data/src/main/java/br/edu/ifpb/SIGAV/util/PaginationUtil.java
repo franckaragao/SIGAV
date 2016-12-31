@@ -8,6 +8,7 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
 
 /**
  * 
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Sort;
  *
  * @param <T>
  */
+@Component
 public class PaginationUtil<T> implements Pagination{
 	
 	

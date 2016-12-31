@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Order;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
 
 /**
@@ -30,7 +29,11 @@ public class PageWrapper<T> {
 	 */
 	public PageWrapper(Page<T> page, HttpServletRequest httpServletRequest) {
 		this.page = page;
-		this.uriBuilder = ServletUriComponentsBuilder.fromRequest(httpServletRequest);
+		
+		//this.uriBuilder = ServletUriComponentsBuilder.fromRequest(httpServletRequest);
+		
+		String httpUrl = replacePlusSinal(httpServletRequest);
+		this.uriBuilder = UriComponentsBuilder.fromHttpUrl(httpUrl);
 	}
 
 	public List<T> getContent(){
@@ -125,5 +128,19 @@ public class PageWrapper<T> {
 		}
 		
 		return direction;
+	}
+	
+	/**
+	 * BUG SPRING
+	 * Para problema de pesquisa com " " (espaço), adiciona o "+" e spring nã permite.
+	 *  Remove onde é adicionado o sinal + entre palavras
+	 * @param httpServletRequest
+	 * @return
+	 */
+	private String replacePlusSinal(HttpServletRequest httpServletRequest) {
+		String httpUrl = httpServletRequest.getRequestURL().append(
+				httpServletRequest.getQueryString() != null ? "?" + httpServletRequest.getQueryString() : "")
+				.toString().replaceAll("\\+", "%20");
+		return httpUrl;
 	}
 }
