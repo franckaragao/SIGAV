@@ -13,6 +13,7 @@ import javax.persistence.criteria.Root;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.util.StringUtils;
 
 import br.edu.ifpb.SIGAV.domain.Veiculo;
@@ -44,6 +45,19 @@ public class VeiculoRepositoryImpl {
 	    query.select(root);
 	    
 	    List<Predicate> predicates = aplyFilter(filter, criteria, query, root);
+	    
+	    Sort sort = pageable.getSort();
+	    
+	    if(sort != null){
+	    	Sort.Order order = sort.iterator().next();
+	    	String property = order.getProperty();
+	    	
+	    	if(order.isAscending()){
+	    		query.orderBy(criteria.asc(root.get(property)));
+	    	}else{
+	    		query.orderBy(criteria.desc(root.get(property)));
+	    	}
+	    }
 	    
 	    if(predicates.size() > 0)
 	    	query.where(criteria.and(predicates.toArray(new Predicate[]{})));
