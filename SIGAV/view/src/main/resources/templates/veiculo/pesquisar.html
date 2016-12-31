@@ -98,22 +98,10 @@
 						<tr>
 							<th class="table-veiculos-col-foto"></th>
 							<th class="table-veiculos-col-placa">
-								<a th:href="${page.urlSortBy('placa')}" th:remove="${page.empty} ? tag">
-									<span>Placa</span>
-									<span class="dropup" th:remove="${page.isDescendent('placa')} ? tag"
-										th:if="${page.isOrder('placa')}">
-										<span class="caret"></span>
-									</span>
-								</a>
+								<th:block th:replace="fragments/ording :: order (${page}, 'placa', 'Placa')"></th:block>
 							</th>
 							<th class="table-veiculos-col-identificacao">
-								<a th:href="${page.urlSortBy('identificacao')}" th:remove="${page.empty} ? tag">
-									<span>Identificação</span>
-									<span class="dropup" th:remove="${page.isDescendent('identificacao')} ? tag"
-										th:if="${page.isOrder('identificacao')}">
-										<span class="caret"></span>
-									</span>
-								</a>
+								<th:block th:replace="fragments/ording :: order (${page}, 'identificacao', 'Identificação')"></th:block>
 							</th>
 							<th class="table-veiculos-col-origem">Origem</th>
 							<th class="table-veiculos-col-fabricante">Fabricante</th>
