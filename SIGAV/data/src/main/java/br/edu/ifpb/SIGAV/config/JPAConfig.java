@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import br.edu.ifpb.SIGAV.domain.Veiculo;
 import br.edu.ifpb.SIGAV.repository.VeiculoRepository;
+import br.edu.ifpb.SIGAV.util.PaginationUtil;
 
 /**
  * Configurações do spring data
@@ -85,5 +86,10 @@ public class JPAConfig {
 		transactionManager.setEntityManagerFactory(entityManagerFactory);
 		return transactionManager;
 	}
-
+	
+	@Bean
+	public PaginationUtil<Veiculo> createPaginationVeiculo(){
+		return new PaginationUtil<Veiculo>();
+	}
+	
 }

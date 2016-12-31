@@ -10,14 +10,15 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.util.StringUtils;
 
 import br.edu.ifpb.SIGAV.domain.Veiculo;
 import br.edu.ifpb.SIGAV.filter.VeiculoFilter;
+import br.edu.ifpb.SIGAV.util.PaginationUtil;
 
 /**
  * 
@@ -31,6 +32,9 @@ public class VeiculoRepositoryImpl {
 	 */
 	@PersistenceContext
 	private EntityManager em;
+	
+	@Autowired
+	private PaginationUtil<Veiculo> paginationUtil;
 	
 	/**
 	 * 
@@ -46,24 +50,13 @@ public class VeiculoRepositoryImpl {
 	    
 	    List<Predicate> predicates = aplyFilter(filter, criteria, query, root);
 	    
-	    Sort sort = pageable.getSort();
-	    if(sort != null){
-	    	Sort.Order order = sort.iterator().next();
-	    	String property = order.getProperty();
-	    	
-	    	if(order.isAscending()){
-	    		query.orderBy(criteria.asc(root.get(property)));
-	    	}else{
-	    		query.orderBy(criteria.desc(root.get(property)));
-	    	}
-	    }
 	    
 	    if(predicates.size() > 0)
 	    	query.where(criteria.and(predicates.toArray(new Predicate[]{})));
 	    
-	    List<Veiculo> results = em.createQuery(query)
-				.setFirstResult(pageable.getPageNumber() * pageable.getPageSize())
-				.setMaxResults(pageable.getPageSize())
+	    paginationUtil.createOrder(pageable, criteria, query, root);
+	    
+	    List<Veiculo> results = paginationUtil.createPagination(pageable, query, em)
 				.getResultList();
 	    
 	    long countRows = countRows(filter, criteria, predicates);
