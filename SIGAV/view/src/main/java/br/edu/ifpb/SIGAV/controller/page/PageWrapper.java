@@ -133,7 +133,8 @@ public class PageWrapper<T> {
 	/**
 	 * BUG SPRING
 	 * Para problema de pesquisa com " " (espaço), adiciona o "+" e spring nã permite.
-	 *  Remove onde é adicionado o sinal + entre palavras
+	 *  Remove onde é adicionado o sinal + entre palavras.
+	 *  
 	 * @param httpServletRequest
 	 * @return
 	 */

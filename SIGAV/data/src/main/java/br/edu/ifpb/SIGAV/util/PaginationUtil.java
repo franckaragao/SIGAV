@@ -11,16 +11,19 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 /**
+ * Classe utilitaria para recursos de paginação
+ * e ordenação em buscas.
  * 
  * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *
  * @param <T>
  */
 @Component
-public class PaginationUtil<T> implements Pagination{
+public class PaginationUtil<T>{
 	
 	
 	/**
+	 * Adiciona aordenação asc/desc.
 	 * 
 	 * @param pageable
 	 * @param criteria
@@ -45,6 +48,7 @@ public class PaginationUtil<T> implements Pagination{
 	}
 	
 	/**
+	 * Cria paginação para qualquer entidade.
 	 * 
 	 * @param pageable
 	 * @param query

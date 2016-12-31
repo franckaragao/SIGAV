@@ -29,12 +29,12 @@ public class FabricanteService {
 	 */
 	@Transactional
 	public Fabricante save(Fabricante fabricante){
-		Optional<Fabricante> fabricanteOptional = fabricanteRepository.findByNomeIgnoreCase(fabricante.getNome());
+		Optional<Fabricante> fabricanteOptional = fabricanteRepository
+				.findByNomeIgnoreCase(fabricante.getNome());
 		
 		if(fabricanteOptional.isPresent())
 			throw new NomeFabricanteExistenteException("Nome de fabricante já cadastrado.");
 		
 		return fabricanteRepository.save(fabricante);
 	}
-
 }

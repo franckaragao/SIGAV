@@ -115,8 +115,12 @@ public class VeiculoRepositoryImpl {
 	  return predicates;
 	}
 	
+	/**
+	 * 
+	 * @param filter
+	 * @return
+	 */
 	private boolean isFabricante(VeiculoFilter filter){
 		return filter.getFabricante() != null && filter.getFabricante().getId() != null;
 	}
-	
 }
