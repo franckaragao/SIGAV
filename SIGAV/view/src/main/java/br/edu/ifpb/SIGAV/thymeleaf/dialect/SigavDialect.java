@@ -9,6 +9,7 @@ import org.thymeleaf.standard.StandardDialect;
 
 import br.edu.ifpb.SIGAV.thymeleaf.processor.ClassForErrorAttributeTagProcessor;
 import br.edu.ifpb.SIGAV.thymeleaf.processor.MessageElementTagProcessor;
+import br.edu.ifpb.SIGAV.thymeleaf.processor.OrderElementTagProcessor;
 
 
 /**
@@ -35,6 +36,7 @@ public class SigavDialect extends AbstractProcessorDialect{
 		
 		processors.add(new ClassForErrorAttributeTagProcessor(dialectPrefix));
 		processors.add(new MessageElementTagProcessor(dialectPrefix));
+		processors.add(new OrderElementTagProcessor(dialectPrefix));
 		
 		return processors;
 	}

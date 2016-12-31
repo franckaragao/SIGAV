@@ -98,10 +98,10 @@
 						<tr>
 							<th class="table-veiculos-col-foto"></th>
 							<th class="table-veiculos-col-placa">
-								<th:block th:replace="fragments/ording :: order (${page}, 'placa', 'Placa')"></th:block>
+								<sigav:order page="${page}" field="placa" text="Placa"/>
 							</th>
 							<th class="table-veiculos-col-identificacao">
-								<th:block th:replace="fragments/ording :: order (${page}, 'identificacao', 'Identificação')"></th:block>
+								<sigav:order page="${page}" field="identificacao" text="Identificação"/>
 							</th>
 							<th class="table-veiculos-col-origem">Origem</th>
 							<th class="table-veiculos-col-fabricante">Fabricante</th>
